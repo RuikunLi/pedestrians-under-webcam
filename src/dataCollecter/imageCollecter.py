@@ -4,8 +4,9 @@ import time
 from abc import ABC, abstractmethod
 import cv2
 from streamlink import Streamlink
-
+from pathlib import Path
 from ..utils import weather, times
+
 
 
 
@@ -16,7 +17,8 @@ class imageCollector(ABC):
         self.webcam_url = webcam_url
         self.city = city
         self.image_prefix = image_prefix
-        self.target_img_path = os.getcwd() + '/rawData'
+        self.path = Path(os.getcwd())
+        self.target_img_path = str(self.path.parent) + '/rawData'
         try:
             self.tz = times.tz_finder(city)
         except:
