@@ -1,0 +1,6 @@
+london = 'https://www.earthcam.com/world/england/london/abbeyroad/?cam=abbeyroad_uk'
+timesquare = 'https://www.earthcam.com/usa/newyork/timessquare/?cam=tsrobo1'
+dublin = 'https://www.earthcam.com/world/ireland/dublin/?cam=templebar'
+prague = 'https://www.earthcam.com/world/czechrepublic/prague/?cam=grandhotel_str'
+elburg = 'https://www.youtube.com/watch?v=vPxAgn3EtDQ'
+dublinpub = 'https://www.earthcam.com/world/ireland/dublin/?cam=dublinpub'
