@@ -1,3 +1,4 @@
+pandas
 imageai
 tensorflow==1.4.0
 keras 
@@ -5,3 +6,5 @@ opencv-python
 geopy
 timezonefinder
 selenium
+streamlink
+pytz
