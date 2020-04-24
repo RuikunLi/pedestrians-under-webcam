@@ -19,6 +19,7 @@ class imageCollector(ABC):
         self.image_prefix = image_prefix
         self.path = Path(os.getcwd())
         self.target_img_path = str(self.path.parent) + '/rawData'
+        self.driver_path = str(self.path) + '/webdrivers'
         try:
             self.tz = times.tz_finder(city)
         except:
@@ -27,12 +28,12 @@ class imageCollector(ABC):
             self.init_streamlink(self.image_prefix)
         except:
             print('Streamlink not avaliable, now use screenshot method')
-            self.init_webdriver(self.image_prefix)
+            # self.init_webdriver(self.image_prefix)
         try:
             self.init_webdriver(self.image_prefix)
         except:
             pass
-        
+
     def init_streamlink(self, image_prefix='stream'):
         self.image_prefix = image_prefix
         self.session = Streamlink()
@@ -58,7 +59,18 @@ class imageCollector(ABC):
         """
 		
         self.image_prefix = image_prefix
-        self.driver = webdriver.Chrome()  # Optional argument, if not specified will search path.
+        try:
+            self.driver = webdriver.Chrome(executable_path=self.driver_path + '/chromedriver')  # Optional argument, if not specified will search path.
+            print('web driver is initialized')
+
+        except:
+            print('no Chrome founded, will try another browser')
+        try:
+            self.driver = webdriver.Firefox(executable_path='{}/{}'.format(self.driver_path, 'geckodriver'))
+            print('web driver is initialized')
+        except:
+            pass
+
         self.driver.get(self.webcam_url)
         time.sleep(15)  # Jump over the ads
 

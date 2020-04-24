@@ -59,7 +59,7 @@ class screenshotCaptureWrapper(imageCollector):
             void
         
         """
-        print("The current conuting function is based on capture frame by stream.")
+        print("The current conuting function is based on capture frame by screenshot.")
         
         results = []
         dir_path = os.path.join(self.target_img_path, self.image_prefix)
