@@ -1,4 +1,6 @@
 import os
+import platform
+
 from selenium import webdriver
 import time
 from abc import ABC, abstractmethod
@@ -19,7 +21,9 @@ class imageCollector(ABC):
         self.image_prefix = image_prefix
         self.path = Path(os.getcwd())
         self.target_img_path = str(self.path.parent) + '/rawData'
-        self.driver_path = str(self.path) + '/webdrivers'
+        # self.driver_path = str(self.path) + '/webdrivers'
+        self.platform = platform.system()
+
         try:
             self.tz = times.tz_finder(city)
         except:
@@ -60,16 +64,16 @@ class imageCollector(ABC):
 		
         self.image_prefix = image_prefix
         try:
-            self.driver = webdriver.Chrome(executable_path=self.driver_path + '/chromedriver')  # Optional argument, if not specified will search path.
+            self.driver = webdriver.Chrome(executable_path='./webdrivers/{}/chromedriver'.format(self.platform))  # Optional argument, if not specified will search path.
             print('web driver is initialized')
 
         except:
             print('no Chrome founded, will try another browser')
-        try:
-            self.driver = webdriver.Firefox(executable_path='{}/{}'.format(self.driver_path, 'geckodriver'))
-            print('web driver is initialized')
-        except:
-            pass
+            try:
+                self.driver = webdriver.Firefox(executable_path='./webdrivers/{}/geckodriver'.format(self.platform))
+                print('web driver is initialized')
+            except:
+                pass
 
         self.driver.get(self.webcam_url)
         time.sleep(15)  # Jump over the ads

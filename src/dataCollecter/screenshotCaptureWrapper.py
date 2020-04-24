@@ -76,6 +76,8 @@ class screenshotCaptureWrapper(imageCollector):
                     
             except KeyboardInterrupt:
                 print('Abort by key interrupt.')
+                if self.driver is not None:
+                    self.driver.quit()
                 return results
         else:
             for i in range(num_im):
@@ -83,4 +85,7 @@ class screenshotCaptureWrapper(imageCollector):
                 results.append(result)
                 time.sleep(time_interval)
                 
+            if self.driver is not None:
+                self.driver.quit()
+
             return results
