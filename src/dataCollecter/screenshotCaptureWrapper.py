@@ -5,6 +5,7 @@ from .imageCollecter import imageCollector
 from ..utils import times, weather
 import time
 
+
 class screenshotCaptureWrapper(imageCollector):
     def __init__(self, webcam_url, city, image_prefix):
         super().__init__(webcam_url, city, image_prefix)

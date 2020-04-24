@@ -1,6 +1,7 @@
 import os
 import platform
-
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
+from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium import webdriver
 import time
 from abc import ABC, abstractmethod
@@ -64,13 +65,17 @@ class imageCollector(ABC):
 		
         self.image_prefix = image_prefix
         try:
-            self.driver = webdriver.Chrome(executable_path='./webdrivers/{}/chromedriver'.format(self.platform))  # Optional argument, if not specified will search path.
+            options = ChromeOptions()
+            options.headless = True
+            self.driver = webdriver.Chrome(options=options, executable_path='./webdrivers/{}/chromedriver'.format(self.platform))  # Optional argument, if not specified will search path.
             print('web driver is initialized')
 
         except:
             print('no Chrome founded, will try another browser')
             try:
-                self.driver = webdriver.Firefox(executable_path='./webdrivers/{}/geckodriver'.format(self.platform))
+                options = FirefoxOptions()
+                options.headless = True
+                self.driver = webdriver.Firefox(options=options, executable_path='./webdrivers/{}/geckodriver'.format(self.platform))
                 print('web driver is initialized')
             except:
                 pass
