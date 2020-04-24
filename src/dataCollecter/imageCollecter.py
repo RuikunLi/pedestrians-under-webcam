@@ -28,7 +28,11 @@ class imageCollector(ABC):
         except:
             print('Streamlink not avaliable, now use screenshot method')
             self.init_webdriver(self.image_prefix)
-
+        try:
+            self.init_webdriver(self.image_prefix)
+        except:
+            pass
+        
     def init_streamlink(self, image_prefix='stream'):
         self.image_prefix = image_prefix
         self.session = Streamlink()
@@ -58,8 +62,14 @@ class imageCollector(ABC):
         self.driver.get(self.webcam_url)
         time.sleep(15)  # Jump over the ads
 
-    @abstractmethod
-    def capture_frame_by_stream_wrapper(self, image_prefix,
-                                        num_im,
-                                        time_interval):
-        print('abstract method')
+    # @abstractmethod
+    # def capture_frame_by_stream_wrapper(self, image_prefix,
+    #                                     num_im,
+    #                                     time_interval):
+    #     print('abstract method')
+
+    # @abstractmethod
+    # def capture_frame_by_screenshot_wrapper(self, image_prefix,
+    #                                     num_im,
+    #                                     time_interval):
+    #     print('abstract method')
