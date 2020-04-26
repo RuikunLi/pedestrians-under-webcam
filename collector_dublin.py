@@ -7,15 +7,15 @@ from datetime import datetime
 import pytz
 
  
-img_prefix = dataUtils.image_prefix_generator('bruges')
+img_prefix = dataUtils.image_prefix_generator('dublin')
 # num_im = int(input("Enter the number of images:"))
 # time_interval = int(input("Enter the time interval (in min):"))
 # time_interval = time_interval * 60
 num_im = 2
-time_interval = 3
+time_interval = 30
 # print(time_interval)
-city = 'Bruges'
-webcam = webcams.bruges
+city = 'Dublin'
+webcam = webcams.dublin
 tz = tz_finder(city)
 start = datetime.now(pytz.timezone(tz))
 bystreamflag = False
