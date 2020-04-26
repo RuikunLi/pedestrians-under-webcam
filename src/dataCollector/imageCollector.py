@@ -34,10 +34,10 @@ class imageCollector(ABC):
         except:
             print('Streamlink not avaliable, now use screenshot method')
             # self.init_webdriver(self.image_prefix)
-        try:
-            self.init_webdriver(self.image_prefix)
-        except:
-            pass
+            try:
+                self.init_webdriver(self.image_prefix)
+            except:
+                pass
 
     def init_streamlink(self, image_prefix='stream'):
         self.image_prefix = image_prefix
