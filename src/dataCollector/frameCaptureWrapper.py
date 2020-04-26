@@ -10,6 +10,7 @@ import time
 class frameCaptureWrapper(imageCollector):
     def __init__(self, webcam_url, city, image_prefix):
         super().__init__(webcam_url, city, image_prefix)
+        self.init_streamlink()
 
     def capture_frame_by_stream(self,
                                 image_index=0
@@ -24,7 +25,7 @@ class frameCaptureWrapper(imageCollector):
         Returns:
             tuple: The name of target image, the number of persons in an image detected by the model and the current time.
         """
-
+        self.init_streamlink(image_prefix=self.image_prefix)
         video_cap = cv2.VideoCapture(self.stream_url)
         dir_path = os.path.join(self.target_img_path, self.image_prefix)
 
@@ -35,8 +36,8 @@ class frameCaptureWrapper(imageCollector):
             ret, frame = video_cap.read()
 
             if not ret:
-                print("Captured frame is broken.")
                 video_cap.release()
+                raise ValueError("Captured frame is broken.")
             else:
                 print("-----------------------------------------------------")
                 print("Capturing frame %d." % image_index)
@@ -66,6 +67,7 @@ class frameCaptureWrapper(imageCollector):
         
         """
         print("The current conuting function is based on capture frame by stream.")
+        
         
         results = []
         dir_path = os.path.join(self.target_img_path, self.image_prefix)

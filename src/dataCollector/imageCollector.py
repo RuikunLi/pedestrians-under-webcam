@@ -29,18 +29,18 @@ class imageCollector(ABC):
             self.tz = times.tz_finder(city)
         except:
             print('### time zone is None, therefore use utc time###')
-        try:
-            self.init_streamlink(self.image_prefix)
-        except:
-            print('Streamlink not avaliable, now use screenshot method')
-            # self.init_webdriver(self.image_prefix)
-            try:
-                self.init_webdriver(self.image_prefix)
-            except:
-                pass
+        # try:
+        #     self.init_streamlink(self.image_prefix)
+        # except:
+        #     print('Streamlink not avaliable, now use screenshot method')
+        #     # self.init_webdriver(self.image_prefix)
+        # try:
+        #     self.init_webdriver(self.image_prefix)
+        # except:
+        #     pass
 
     def init_streamlink(self, image_prefix='stream'):
-        self.image_prefix = image_prefix
+        self.image_prefix = self.image_prefix + '_' + image_prefix
         self.session = Streamlink()
         self.session.set_option("http-headers", "User-Agent=Mozilla/5.0 (Windows NT 10.0 Win64 x64 rv:72.0) Gecko/20100101 Firefox/72.0")
         self.streams = self.session.streams(self.webcam_url)
@@ -63,11 +63,15 @@ class imageCollector(ABC):
             Void
         """
 		
-        self.image_prefix = image_prefix
+        self.image_prefix = self.image_prefix + '_' + image_prefix
         try:
             options = ChromeOptions()
             options.headless = True
             self.driver = webdriver.Chrome(options=options, executable_path='./webdrivers/{}/chromedriver'.format(self.platform))  # Optional argument, if not specified will search path.
+            self.driver.maximize_window()
+            size = self.driver.get_window_size()
+            options.add_argument("window-size={}".format(size))
+            self.driver = webdriver.Chrome(options=options, executable_path='./webdrivers/{}/chromedriver'.format(self.platform))
             print('web driver is initialized')
 
         except:
@@ -75,7 +79,9 @@ class imageCollector(ABC):
             try:
                 options = FirefoxOptions()
                 options.headless = True
+                # options.add_argument("window-size=1920,1080")
                 self.driver = webdriver.Firefox(options=options, executable_path='./webdrivers/{}/geckodriver'.format(self.platform))
+                self.driver.Manage().Window.Maximize()
                 print('web driver is initialized')
             except:
                 pass

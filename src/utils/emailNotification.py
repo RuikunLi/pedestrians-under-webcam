@@ -5,15 +5,22 @@ import smtplib, ssl
 from email.mime.text import MIMEText
 from email.header import Header
 
-def emailNotification(prefix, num, time_interval):
+def emailNotification(prefix, num, time_interval, start, end, url, method):
     
     try:
         sender = 'pedestriansunderwebcam@gmail.com'
         receivers = ['ruikun.li@rwth-aachen.de']  
         
-        message = MIMEText("{} task finished, there are {} samples, time interval is {} minutes".format(prefix, num, time_interval/60), 'plain', 'utf-8')
+        message = MIMEText(
+            """
+            <p> {} task finished, there are {} samples, time interval is {} minutes  </p>
+            <p>start time at webcam timezone: {} </p>
+            <p>end time at webcam timezone:{} </p>
+            <p>webcam url : {} </p>
+            <p>method: {}</p>
+                            """.format(prefix, num, time_interval/60, start, end, url, method), 'html', 'utf-8')
         
-        subject = '{} task finished notification'.format(prefix)
+        subject = '{} task notification'.format(prefix)
         message['Subject'] = Header(subject, 'utf-8')
 
         mail = smtplib.SMTP('smtp.gmail.com',587)
