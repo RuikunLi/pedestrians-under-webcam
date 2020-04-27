@@ -4,10 +4,10 @@ import os
 import datetime
  
 
-def store_as_csv(data, target_img_path, image_prefix):
+def store_as_csv(data, target_img_path, image_prefix, method):
 
     df = pd.DataFrame(np.array(data), columns=['image_name', 'time', 'weather'])
-    df.to_csv(path_or_buf=os.path.join(target_img_path + "/{}/{}.csv" .format(image_prefix, image_prefix)))
+    df.to_csv(path_or_buf=target_img_path + "/{}_{}/{}.csv" .format(image_prefix, method, image_prefix))
 
 def image_prefix_generator(city):
     d = datetime.datetime.today()
