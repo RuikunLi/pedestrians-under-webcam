@@ -63,7 +63,7 @@ class imageCollector(ABC):
         """
         exec_path = str(self.path) + '/webdrivers/{}/geckodriver'.format(self.platform)
         print(exec_path)
-        if self.platform == 'Linux':
+        if self.platform != 'Windows':
             os.system("chmod +x {}".format(exec_path))
         
         try:
