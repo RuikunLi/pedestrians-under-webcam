@@ -6,8 +6,8 @@ from email.mime.text import MIMEText
 from email.header import Header
 import platform
 
-def emailNotification(prefix, num, time_interval, start, end, url, method):
-    platform = platform.system()
+def emailNotification(prefix, num, time_interval, start, end, url, method, tz):
+    sys = platform.system()
     
     try:
         sender = 'pedestriansunderwebcam@gmail.com'
@@ -18,10 +18,11 @@ def emailNotification(prefix, num, time_interval, start, end, url, method):
             <p> {} Task finished, there are {} samples, time interval is {} minutes  </p>
             <p>Start time at webcam timezone: {} </p>
             <p>End time at webcam timezone:{} </p>
+            <p> Timezone: {} </p>
             <p>Webcam url : {} </p>
             <p>Method: {}</p>
             <p>Platform: {}</p>
-                            """.format(prefix, num, time_interval/60, start, end, url, method, platform), 'html', 'utf-8')
+                            """.format(prefix, num, time_interval/60, start, end, tz, url, method, sys), 'html', 'utf-8')
         
         subject = '{} task notification'.format(prefix)
         message['Subject'] = Header(subject, 'utf-8')
