@@ -61,15 +61,16 @@ class imageCollector(ABC):
         Returns:
             Void
         """
-		exec_path = str(self.path) + '/webdrivers/{}/geckodriver'.format(self.platform)
+        exec_path = str(self.path) + '/webdrivers/{}/geckodriver'.format(self.platform)
+        print(exec_path)
         if self.platform == 'Linux':
             os.system("chmod +x {}".format(exec_path))
+        
         try:
             options = FirefoxOptions()
             options.headless = True
             # options.add_argument("window-size=1920,1080")
             
-            print(exec_path)
             self.driver = webdriver.Firefox(options=options, executable_path=exec_path)
             # self.driver.Manage().Window.Maximize()
             self.driver.maximize_window()
@@ -81,7 +82,7 @@ class imageCollector(ABC):
         try:
             options = ChromeOptions()
             options.headless = True
-            self.driver = webdriver.Chrome(options=options, executable_path=exec_path))  # Optional argument, if not specified will search path.
+            self.driver = webdriver.Chrome(options=options, executable_path=exec_path)  # Optional argument, if not specified will search path.
             self.driver.maximize_window()
             size = self.driver.get_window_size()
             options.add_argument("window-size={}".format(size))
