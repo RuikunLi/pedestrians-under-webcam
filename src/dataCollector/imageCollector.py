@@ -61,32 +61,34 @@ class imageCollector(ABC):
         Returns:
             Void
         """
-		
-        # try:
-        #     options = ChromeOptions()
-        #     options.headless = True
-        #     self.driver = webdriver.Chrome(options=options, executable_path='./webdrivers/{}/chromedriver'.format(self.platform))  # Optional argument, if not specified will search path.
-        #     self.driver.maximize_window()
-        #     size = self.driver.get_window_size()
-        #     options.add_argument("window-size={}".format(size))
-        #     self.driver = webdriver.Chrome(options=options, executable_path='./webdrivers/{}/chromedriver'.format(self.platform))
-        #     print('web driver is initialized')
+		exec_path = str(self.path) + '/webdrivers/{}/geckodriver'.format(self.platform)
+        if self.platform == 'Linux':
+            os.system("chmod +x {}".format(exec_path))
+        try:
+            options = FirefoxOptions()
+            options.headless = True
+            # options.add_argument("window-size=1920,1080")
+            
+            print(exec_path)
+            self.driver = webdriver.Firefox(options=options, executable_path=exec_path)
+            # self.driver.Manage().Window.Maximize()
+            self.driver.maximize_window()
+            print('web driver is initialized')
+            
 
-        # except:
-        #     print('no Chrome founded, will try another browser')
-        # try:
-        options = FirefoxOptions()
-        options.headless = True
-        # options.add_argument("window-size=1920,1080")
-        exec_path = str(self.path) + '/webdrivers/{}/geckodriver'.format(self.platform)
-        os.system("chmod +x {}".format(exec_path))
-        print(exec_path)
-        self.driver = webdriver.Firefox(options=options, executable_path=exec_path)
-        # self.driver.Manage().Window.Maximize()
-        self.driver.maximize_window()
-        print('web driver is initialized')
-        # except:
-        #     pass
+        except:
+            print('no Firefox founded, will try another browser')
+        try:
+            options = ChromeOptions()
+            options.headless = True
+            self.driver = webdriver.Chrome(options=options, executable_path=exec_path))  # Optional argument, if not specified will search path.
+            self.driver.maximize_window()
+            size = self.driver.get_window_size()
+            options.add_argument("window-size={}".format(size))
+            self.driver = webdriver.Chrome(options=options, executable_path=exec_path)
+            print('web driver is initialized')
+        except:
+            pass
 
         self.driver.get(self.webcam_url)
         time.sleep(15)  # Jump over the ads
