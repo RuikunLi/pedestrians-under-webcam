@@ -82,7 +82,8 @@ class imageCollector(ABC):
         os.system("chmod +x {}".format(exec_path))
         print(exec_path)
         self.driver = webdriver.Firefox(options=options, executable_path=exec_path)
-        self.driver.Manage().Window.Maximize()
+        # self.driver.Manage().Window.Maximize()
+        self.driver.maximize_window()
         print('web driver is initialized')
         # except:
         #     pass
