@@ -67,10 +67,11 @@ class imageCollector(ABC):
             options.headless = True
             exec_path = './webdrivers/{}/geckodriver'.format(self.platform)
             self.driver = webdriver.Firefox(options=options, executable_path=exec_path)
-            self.driver.maximize_window()
+            if self.platform == 'Linux':
+                self.driver.manage().window().maximize()
+            else:
+                self.driver.maximize_window()
             print('web driver is initialized')
-
-            
 
         except:
             print('no Firefox founded, will try another browser')
