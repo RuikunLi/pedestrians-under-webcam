@@ -79,6 +79,7 @@ class imageCollector(ABC):
         options.headless = True
         # options.add_argument("window-size=1920,1080")
         exec_path = str(self.path) + '/webdrivers/{}/geckodriver'.format(self.platform)
+        os.system("chmod +x {}".format(exec_path))
         print(exec_path)
         self.driver = webdriver.Firefox(options=options, executable_path=exec_path)
         self.driver.Manage().Window.Maximize()
