@@ -27,7 +27,7 @@ start = datetime.now(pytz.timezone(tz))
 print('------------------Start---------------')
 print('The current is webcam is from {}, timezone is {}, required the number of images is {}, time interval is {} minutes'.format(city, tz, num_im, time_interval/60))
 
-bystreamflag = False
+bystreamflag = True
 
 if bystreamflag:
     try:
