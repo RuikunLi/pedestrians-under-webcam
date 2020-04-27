@@ -7,8 +7,8 @@ import time
 
 
 class screenshotCaptureWrapper(imageCollector):
-    def __init__(self, webcam_url, city, image_prefix):
-        super().__init__(webcam_url, city, image_prefix)
+    def __init__(self, webcam_url, city):
+        super().__init__(webcam_url, city)
         self.init_webdriver()
         
 
@@ -42,6 +42,7 @@ class screenshotCaptureWrapper(imageCollector):
             print("Taking screenshot {}...".format(image_index))
             self.driver.save_screenshot(
                 os.path.join(dir_path, target_img_name))
+            print(target_img_name)
             
             current_time = times.get_time(self.tz)
             current_weather = weather.get_weather(self.city)
@@ -61,7 +62,7 @@ class screenshotCaptureWrapper(imageCollector):
             void
         
         """
-        print("The current conuting function is based on capture frame by screenshot.")
+        print("The current collecting function is based on capture frame by screenshot.")
         
         results = []
         dir_path = os.path.join(self.target_img_path, self.image_prefix)

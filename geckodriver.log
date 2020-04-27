@@ -282,3 +282,186 @@ JavaScript error: , line 0: AbortError: The fetching process for the media resou
 [Parent 25500, Gecko_IOThread] WARNING: file z:/task_1583751780/build/src/ipc/chromium/src/base/process_util_win.cc, line 160
 [Child 24156, Chrome_ChildThread] WARNING: pipe error: 232: file z:/task_1583751780/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 507
 [Child 24156, Chrome_ChildThread] WARNING: pipe error: 232: file z:/task_1583751780/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 507
+1588011078624	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lirui\\AppData\\Local\\Temp\\rust_mozprofilePgVz8Z"
+*** You are running in headless mode.
+1588011079088	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1588011079536	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1588011079537	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1588011079537	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1588011079537	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1588011081068	Marionette	INFO	Listening on port 59840
+1588011081246	Marionette	WARN	TLS certificate errors will be ignored for this session
+1588011509621	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lirui\\AppData\\Local\\Temp\\rust_mozprofilevUr14C"
+*** You are running in headless mode.
+1588011510035	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1588011510496	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1588011510496	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1588011510496	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1588011510497	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1588011512268	Marionette	INFO	Listening on port 60069
+1588011512740	Marionette	WARN	TLS certificate errors will be ignored for this session
+1588014290130	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lirui\\AppData\\Local\\Temp\\rust_mozprofilen11231"
+*** You are running in headless mode.
+1588014290446	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1588014290921	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1588014290921	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1588014290921	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1588014290921	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1588014292763	Marionette	INFO	Listening on port 61207
+1588014293246	Marionette	WARN	TLS certificate errors will be ignored for this session
+1588014560016	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lirui\\AppData\\Local\\Temp\\rust_mozprofileIajoND"
+*** You are running in headless mode.
+1588014560351	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1588014560870	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1588014560870	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1588014560870	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1588014560870	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1588014562676	Marionette	INFO	Listening on port 61357
+1588014563130	Marionette	WARN	TLS certificate errors will be ignored for this session
+1588015358200	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lirui\\AppData\\Local\\Temp\\rust_mozprofileFVVoRm"
+*** You are running in headless mode.
+1588015358525	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1588015358970	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1588015358970	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1588015358970	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1588015358970	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1588015360669	Marionette	INFO	Listening on port 61741
+1588015360811	Marionette	WARN	TLS certificate errors will be ignored for this session
+1588015423163	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lirui\\AppData\\Local\\Temp\\rust_mozprofileOmgMUU"
+*** You are running in headless mode.
+1588015423511	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1588015423936	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1588015423936	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1588015423936	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1588015423936	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1588015425647	Marionette	INFO	Listening on port 61798
+1588015425782	Marionette	WARN	TLS certificate errors will be ignored for this session
+1588015452248	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lirui\\AppData\\Local\\Temp\\rust_mozprofileM77B40"
+*** You are running in headless mode.
+1588015452615	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1588015453038	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1588015453038	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1588015453038	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1588015453038	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1588015454865	Marionette	INFO	Listening on port 61845
+1588015455362	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://static.earthcam.com/js/earthcam/halloffame/hof.class.js?20200414a, line 261: unreachable code after return statement
+JavaScript warning: https://static.earthcam.com/js/earthcam/functions.ecntemplate.js?20200414a, line 40: unreachable code after return statement
+JavaScript warning: https://static.earthcam.com/js/videojs/videojs-panorama.v5.js?20200414a, line 59: Error: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://static.earthcam.com/js/videojs/videojs-panorama.v5.js?20200414a, line 59: Error: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://static.earthcam.com/js/videojs/videojs-panorama.v5.js?20200414a, line 59: Error: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://static.earthcam.com/js/videojs/videojs-panorama.v5.js?20200414a, line 59: Error: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript error: , line 0: uncaught exception: Error: invalid version specified
+JavaScript error: https://static.earthcam.com/js/earthcam/ecnplayerhtml5/js/ecnplayerhtml5-package.js?20200414a, line 4: TypeError: this._videoJS360PanoPlayer1.getChild(...) is undefined
+JavaScript error: https://static.earthcam.com/js/earthcam/ecnplayerhtml5/js/ecnplayerhtml5-package.js?20200414a, line 4: TypeError: this._videoJS360PanoPlayer2.getChild(...) is undefined
+JavaScript error: , line 0: AbortError: The fetching process for the media resource was aborted by the user agent at the user's request.
+[Parent 21332, Gecko_IOThread] WARNING: file z:/task_1583751780/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 307
+[Parent 21332, Gecko_IOThread] WARNING: file z:/task_1583751780/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 307
+1588015484978	Marionette	INFO	Stopped listening on port 61845
+1588015827859	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lirui\\AppData\\Local\\Temp\\rust_mozprofileiOQylk"
+*** You are running in headless mode.
+1588015828233	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1588015828651	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1588015828652	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1588015828652	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1588015828652	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1588015830238	Marionette	INFO	Listening on port 62152
+1588015830481	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://static.earthcam.com/js/earthcam/halloffame/hof.class.js?20200414a, line 261: unreachable code after return statement
+JavaScript warning: https://static.earthcam.com/js/earthcam/functions.ecntemplate.js?20200414a, line 40: unreachable code after return statement
+JavaScript warning: https://static.earthcam.com/js/videojs/videojs-panorama.v5.js?20200414a, line 59: Error: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://static.earthcam.com/js/videojs/videojs-panorama.v5.js?20200414a, line 59: Error: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://static.earthcam.com/js/videojs/videojs-panorama.v5.js?20200414a, line 59: Error: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://static.earthcam.com/js/videojs/videojs-panorama.v5.js?20200414a, line 59: Error: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript error: , line 0: uncaught exception: Error: invalid version specified
+JavaScript error: https://static.earthcam.com/js/earthcam/ecnplayerhtml5/js/ecnplayerhtml5-package.js?20200414a, line 4: TypeError: this._videoJS360PanoPlayer1.getChild(...) is undefined
+JavaScript error: https://static.earthcam.com/js/earthcam/ecnplayerhtml5/js/ecnplayerhtml5-package.js?20200414a, line 4: TypeError: this._videoJS360PanoPlayer2.getChild(...) is undefined
+JavaScript error: , line 0: AbortError: The fetching process for the media resource was aborted by the user agent at the user's request.
+[Parent 8016, Gecko_IOThread] WARNING: file z:/task_1583751780/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 307
+[Parent 8016, Gecko_IOThread] WARNING: file z:/task_1583751780/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 307
+1588015862918	Marionette	INFO	Stopped listening on port 62152
+1588016083924	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lirui\\AppData\\Local\\Temp\\rust_mozprofileVxFi7e"
+*** You are running in headless mode.
+1588016084486	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1588016085043	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1588016085043	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1588016085043	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1588016085043	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1588016087110	Marionette	INFO	Listening on port 62327
+1588016087547	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://static.earthcam.com/js/earthcam/halloffame/hof.class.js?20200414a, line 261: unreachable code after return statement
+JavaScript warning: https://static.earthcam.com/js/earthcam/functions.ecntemplate.js?20200414a, line 40: unreachable code after return statement
+JavaScript warning: https://static.earthcam.com/js/videojs/videojs-panorama.v5.js?20200414a, line 59: Error: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://static.earthcam.com/js/videojs/videojs-panorama.v5.js?20200414a, line 59: Error: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://static.earthcam.com/js/videojs/videojs-panorama.v5.js?20200414a, line 59: Error: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://static.earthcam.com/js/videojs/videojs-panorama.v5.js?20200414a, line 59: Error: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript error: , line 0: uncaught exception: Error: invalid version specified
+JavaScript error: https://static.earthcam.com/js/earthcam/ecnplayerhtml5/js/ecnplayerhtml5-package.js?20200414a, line 4: TypeError: this._videoJS360PanoPlayer1.getChild(...) is undefined
+JavaScript error: https://static.earthcam.com/js/earthcam/ecnplayerhtml5/js/ecnplayerhtml5-package.js?20200414a, line 4: TypeError: this._videoJS360PanoPlayer2.getChild(...) is undefined
+JavaScript error: , line 0: AbortError: The fetching process for the media resource was aborted by the user agent at the user's request.
+[Parent 8408, Gecko_IOThread] WARNING: file z:/task_1583751780/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 307
+[Parent 8408, Gecko_IOThread] WARNING: file z:/task_1583751780/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 307
+1588016119922	Marionette	INFO	Stopped listening on port 62327
+1588016474873	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lirui\\AppData\\Local\\Temp\\rust_mozprofilehvWEMV"
+*** You are running in headless mode.
+1588016475191	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1588016475579	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1588016475579	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1588016475579	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1588016475579	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1588016477250	Marionette	INFO	Listening on port 62746
+1588016477483	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://static.earthcam.com/js/earthcam/halloffame/hof.class.js?20200414a, line 261: unreachable code after return statement
+JavaScript warning: https://static.earthcam.com/js/earthcam/functions.ecntemplate.js?20200414a, line 40: unreachable code after return statement
+JavaScript warning: https://static.earthcam.com/js/videojs/videojs-panorama.v5.js?20200414a, line 59: Error: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://static.earthcam.com/js/videojs/videojs-panorama.v5.js?20200414a, line 59: Error: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://static.earthcam.com/js/videojs/videojs-panorama.v5.js?20200414a, line 59: Error: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://static.earthcam.com/js/videojs/videojs-panorama.v5.js?20200414a, line 59: Error: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript error: , line 0: uncaught exception: Error: invalid version specified
+JavaScript error: https://static.earthcam.com/js/earthcam/ecnplayerhtml5/js/ecnplayerhtml5-package.js?20200414a, line 4: TypeError: this._videoJS360PanoPlayer1.getChild(...) is undefined
+JavaScript error: https://static.earthcam.com/js/earthcam/ecnplayerhtml5/js/ecnplayerhtml5-package.js?20200414a, line 4: TypeError: this._videoJS360PanoPlayer2.getChild(...) is undefined
+JavaScript error: , line 0: AbortError: The fetching process for the media resource was aborted by the user agent at the user's request.
+[Parent 25396, Gecko_IOThread] WARNING: file z:/task_1583751780/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 307
+[Parent 25396, Gecko_IOThread] WARNING: file z:/task_1583751780/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 307
+1588016840630	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\lirui\\AppData\\Local\\Temp\\rust_mozprofileVaTaPt"
+*** You are running in headless mode.
+1588016841008	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1588016841450	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1588016841450	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1588016841450	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1588016841450	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1588016843238	Marionette	INFO	Listening on port 63111
+1588016843263	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://static.earthcam.com/js/earthcam/halloffame/hof.class.js?20200414a, line 261: unreachable code after return statement
+JavaScript warning: https://static.earthcam.com/js/earthcam/functions.ecntemplate.js?20200414a, line 40: unreachable code after return statement
+JavaScript warning: https://static.earthcam.com/js/videojs/videojs-panorama.v5.js?20200414a, line 59: Error: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://static.earthcam.com/js/videojs/videojs-panorama.v5.js?20200414a, line 59: Error: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://static.earthcam.com/js/videojs/videojs-panorama.v5.js?20200414a, line 59: Error: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://static.earthcam.com/js/videojs/videojs-panorama.v5.js?20200414a, line 59: Error: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript error: , line 0: uncaught exception: Error: invalid version specified
+JavaScript error: https://static.earthcam.com/js/earthcam/ecnplayerhtml5/js/ecnplayerhtml5-package.js?20200414a, line 4: TypeError: this._videoJS360PanoPlayer1.getChild(...) is undefined
+JavaScript error: https://static.earthcam.com/js/earthcam/ecnplayerhtml5/js/ecnplayerhtml5-package.js?20200414a, line 4: TypeError: this._videoJS360PanoPlayer2.getChild(...) is undefined
+[Parent 2300, Gecko_IOThread] WARNING: file z:/task_1583751780/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 307
+[Parent 2300, Gecko_IOThread] WARNING: file z:/task_1583751780/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 307
+1588016874900	Marionette	INFO	Stopped listening on port 63111

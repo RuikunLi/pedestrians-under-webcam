@@ -8,7 +8,7 @@ from abc import ABC, abstractmethod
 import cv2
 from streamlink import Streamlink
 from pathlib import Path
-from ..utils import weather, times
+from ..utils import weather, times, dataUtils
 
 
 
@@ -16,10 +16,10 @@ from ..utils import weather, times
 # 先尝试streamlink， 不成就是用screenshot
 
 class imageCollector(ABC):
-    def __init__(self, webcam_url, city, image_prefix):
+    def __init__(self, webcam_url, city):
         self.webcam_url = webcam_url
         self.city = city
-        self.image_prefix = image_prefix
+        self.image_prefix = dataUtils.image_prefix_generator(city)
         self.path = Path(os.getcwd())
         self.target_img_path = str(self.path.parent) + '/rawData'
         # self.driver_path = str(self.path) + '/webdrivers'
@@ -39,8 +39,7 @@ class imageCollector(ABC):
         # except:
         #     pass
 
-    def init_streamlink(self, image_prefix='stream'):
-        self.image_prefix = self.image_prefix + '_' + image_prefix
+    def init_streamlink(self):
         self.session = Streamlink()
         self.session.set_option("http-headers", "User-Agent=Mozilla/5.0 (Windows NT 10.0 Win64 x64 rv:72.0) Gecko/20100101 Firefox/72.0")
         self.streams = self.session.streams(self.webcam_url)
@@ -52,7 +51,7 @@ class imageCollector(ABC):
         self.stream_url = self.stream.url
         
 
-    def init_webdriver(self, image_prefix='screenshot'):
+    def init_webdriver(self):
         """
        Initialize the webdriver of Chrome by using the python lib selenium.
         
@@ -63,13 +62,12 @@ class imageCollector(ABC):
             Void
         """
 		
-        self.image_prefix = self.image_prefix + '_' + image_prefix
         try:
             options = FirefoxOptions()
             options.headless = True
-            # options.add_argument("window-size=1920,1080")
-            self.driver = webdriver.Firefox(options=options, executable_path='./webdrivers/{}/geckodriver'.format(self.platform))
-            self.driver.Manage().Window.Maximize()
+            exec_path = './webdrivers/{}/geckodriver'.format(self.platform)
+            self.driver = webdriver.Firefox(options=options, executable_path=exec_path)
+            self.driver.maximize_window()
             print('web driver is initialized')
 
             

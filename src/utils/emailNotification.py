@@ -6,7 +6,7 @@ from email.mime.text import MIMEText
 from email.header import Header
 import platform
 
-def emailNotification(prefix, num, time_interval, start, end, url, method, tz):
+def emailNotification(city, num, time_interval, start, end, url, method, tz):
     sys = platform.system()
     
     try:
@@ -22,9 +22,9 @@ def emailNotification(prefix, num, time_interval, start, end, url, method, tz):
             <p>Webcam url : {} </p>
             <p>Method: {}</p>
             <p>Platform: {}</p>
-                            """.format(prefix, num, time_interval/60, start, end, tz, url, method, sys), 'html', 'utf-8')
+                            """.format(city, num, time_interval/60, start, end, tz, url, method, sys), 'html', 'utf-8')
         
-        subject = '{} task notification'.format(prefix)
+        subject = '{} task notification'.format(city)
         message['Subject'] = Header(subject, 'utf-8')
 
         mail = smtplib.SMTP('smtp.gmail.com',587)
