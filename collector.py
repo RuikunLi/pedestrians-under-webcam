@@ -32,7 +32,7 @@ bystreamflag = True
 if bystreamflag:
     try:
         collector = frameCaptureWrapper(webcam_url=webcam, city=city)
-        res = collector.capture_frame_by_stream_wrapper(num_im=num_im)
+        res = collector.capture_frame_by_stream_wrapper(num_im=num_im, time_interval=time_interval)
         method = 'stream'
 
     except:
