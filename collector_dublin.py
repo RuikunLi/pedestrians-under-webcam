@@ -18,7 +18,7 @@ city = 'Dublin'
 webcam = webcams.dublin
 tz = tz_finder(city)
 start = datetime.now(pytz.timezone(tz))
-bystreamflag = False
+bystreamflag = True
 
 if bystreamflag:
     try:
