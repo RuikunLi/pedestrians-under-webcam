@@ -65,23 +65,25 @@ class imageCollector(ABC):
 		
         self.image_prefix = self.image_prefix + '_' + image_prefix
         try:
-            options = ChromeOptions()
+            options = FirefoxOptions()
             options.headless = True
-            self.driver = webdriver.Chrome(options=options, executable_path='./webdrivers/{}/chromedriver'.format(self.platform))  # Optional argument, if not specified will search path.
-            self.driver.maximize_window()
-            size = self.driver.get_window_size()
-            options.add_argument("window-size={}".format(size))
-            self.driver = webdriver.Chrome(options=options, executable_path='./webdrivers/{}/chromedriver'.format(self.platform))
+            # options.add_argument("window-size=1920,1080")
+            self.driver = webdriver.Firefox(options=options, executable_path='./webdrivers/{}/geckodriver'.format(self.platform))
+            self.driver.Manage().Window.Maximize()
             print('web driver is initialized')
 
+            
+
         except:
-            print('no Chrome founded, will try another browser')
+            print('no Firefox founded, will try another browser')
             try:
-                options = FirefoxOptions()
+                options = ChromeOptions()
                 options.headless = True
-                # options.add_argument("window-size=1920,1080")
-                self.driver = webdriver.Firefox(options=options, executable_path='./webdrivers/{}/geckodriver'.format(self.platform))
-                self.driver.Manage().Window.Maximize()
+                self.driver = webdriver.Chrome(options=options, executable_path='./webdrivers/{}/chromedriver'.format(self.platform))  # Optional argument, if not specified will search path.
+                self.driver.maximize_window()
+                size = self.driver.get_window_size()
+                options.add_argument("window-size={}".format(size))
+                self.driver = webdriver.Chrome(options=options, executable_path='./webdrivers/{}/chromedriver'.format(self.platform))
                 print('web driver is initialized')
             except:
                 pass
