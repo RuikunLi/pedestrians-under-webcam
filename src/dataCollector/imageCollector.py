@@ -62,7 +62,6 @@ class imageCollector(ABC):
             Void
         """
 		
-        self.image_prefix = self.image_prefix + '_' + image_prefix
         try:
             options = ChromeOptions()
             options.headless = True
