@@ -4,8 +4,10 @@
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.header import Header
+import platform
 
 def emailNotification(prefix, num, time_interval, start, end, url, method):
+    platform = platform.system()
     
     try:
         sender = 'pedestriansunderwebcam@gmail.com'
@@ -13,12 +15,13 @@ def emailNotification(prefix, num, time_interval, start, end, url, method):
         
         message = MIMEText(
             """
-            <p> {} task finished, there are {} samples, time interval is {} minutes  </p>
-            <p>start time at webcam timezone: {} </p>
-            <p>end time at webcam timezone:{} </p>
-            <p>webcam url : {} </p>
-            <p>method: {}</p>
-                            """.format(prefix, num, time_interval/60, start, end, url, method), 'html', 'utf-8')
+            <p> {} Task finished, there are {} samples, time interval is {} minutes  </p>
+            <p>Start time at webcam timezone: {} </p>
+            <p>End time at webcam timezone:{} </p>
+            <p>Webcam url : {} </p>
+            <p>Method: {}</p>
+            <p>Platform: {}</p>
+                            """.format(prefix, num, time_interval/60, start, end, url, method, platform), 'html', 'utf-8')
         
         subject = '{} task notification'.format(prefix)
         message['Subject'] = Header(subject, 'utf-8')
