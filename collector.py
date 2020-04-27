@@ -15,8 +15,9 @@ if city not in list(webcams.webcams.keys()):
     raise ValueError("enterted city not in the list")
         
 num_im = int(input("Enter the number of images:"))
-time_interval = float(input("Enter the time interval (in min):"))
-time_interval = time_interval * 60
+time = float(input("Enter the time interval (in min):"))
+time_interval = int(time * 60)
+
 # num_im = 2
 # time_interval = 5
 

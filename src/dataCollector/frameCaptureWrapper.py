@@ -53,8 +53,8 @@ class frameCaptureWrapper(imageCollector):
                 return target_img_name, current_time, current_weather
 
     def capture_frame_by_stream_wrapper(self,
-                                        num_im=6,
-                                        time_interval=10):
+                                        num_im,
+                                        time_interval):
         """
         A wrapper of the function capture_frame_by_stream.
         
