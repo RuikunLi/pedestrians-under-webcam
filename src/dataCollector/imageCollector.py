@@ -19,7 +19,7 @@ class imageCollector(ABC):
     def __init__(self, webcam_url, city):
         self.webcam_url = webcam_url
         self.city = city
-        self.image_prefix = dataUtils.image_prefix_generator(city)
+        self.image_prefix = city
         self.path = Path(os.getcwd())
         self.target_img_path = str(self.path.parent) + '/rawData'
         # self.driver_path = str(self.path) + '/webdrivers'
@@ -49,6 +49,7 @@ class imageCollector(ABC):
         q = list(self.streams.keys())[0]
         self.stream = self.streams['%s' % q]
         self.stream_url = self.stream.url
+        self.video_cap = cv2.VideoCapture(self.stream_url)
         
 
     def init_webdriver(self):

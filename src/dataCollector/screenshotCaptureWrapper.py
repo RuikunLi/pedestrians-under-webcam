@@ -2,7 +2,7 @@ import cv2
 import os
 from ..webcamList import webcams
 from .imageCollector import imageCollector
-from ..utils import times, weather
+from ..utils import times, weather, dataUtils
 import time
 
 
@@ -28,7 +28,8 @@ class screenshotCaptureWrapper(imageCollector):
             tuple: The name of target image, the number of persons in an image detected by the model and the current time.
         
         """
-		
+	    
+        self.image_prefix = dataUtils.image_prefix_generator(self.city)
         dir_path = os.path.join(self.target_img_path, self.image_prefix)
 
         if self.driver is None:
@@ -43,9 +44,12 @@ class screenshotCaptureWrapper(imageCollector):
             self.driver.save_screenshot(
                 os.path.join(dir_path, target_img_name))
             print(target_img_name)
-            
-            current_time = times.get_time(self.tz)
-            current_weather = weather.get_weather(self.city)
+            try:
+                current_time = times.get_time(self.tz)
+                current_weather = weather.get_weather(self.city)
+                print(current_time)
+            except Exception as e:
+                print(e)
 
             return target_img_name, current_time, current_weather
 

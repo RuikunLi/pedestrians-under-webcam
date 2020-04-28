@@ -3,7 +3,7 @@ import cv2
 import os
 from ..webcamList import webcams
 from .imageCollector import imageCollector
-from ..utils import times, weather
+from ..utils import times, weather, dataUtils
 import time
 
 
@@ -26,18 +26,23 @@ class frameCaptureWrapper(imageCollector):
             tuple: The name of target image, the number of persons in an image detected by the model and the current time.
         """
         # image_prefix = self.image_prefix + '_stream'
-        self.init_streamlink()
-        video_cap = cv2.VideoCapture(self.stream_url)
+        # self.init_streamlink()
+        self.image_prefix = dataUtils.image_prefix_generator(self.city)
+        # video_cap = cv2.VideoCapture(self.stream_url)
         dir_path = os.path.join(self.target_img_path, self.image_prefix)
 
-        if video_cap is None:
+        if self.video_cap is None:
             print("Open webcam [%s] failed." %self.webcam_url)
             return None
         else:
-            ret, frame = video_cap.read()
+            ret, frame = self.video_cap.read()
             if not ret:
-                video_cap.release()
-                raise ValueError("Captured frame is broken.")
+                self.video_cap.release()
+                try:
+                    self.init_streamlink()
+                except Exception as e:
+                    print(e)
+                    raise ValueError("Captured frame is broken.")
             else:
                 print("-----------------------------------------------------")
                 print("Capturing frame %d." % image_index)
@@ -45,10 +50,13 @@ class frameCaptureWrapper(imageCollector):
                 cv2.imwrite(os.path.join(dir_path, target_img_name), frame)
                 print(dir_path, target_img_name)
 
-                video_cap.release()
-
-                current_time = times.get_time(self.tz)
-                current_weather = weather.get_weather(self.city)
+                # video_cap.release()
+                try:
+                    current_time = times.get_time(self.tz)
+                    current_weather = weather.get_weather(self.city)
+                    print(current_time)
+                except Exception as e:
+                    print(e)
 
                 return target_img_name, current_time, current_weather
 
@@ -83,15 +91,18 @@ class frameCaptureWrapper(imageCollector):
                     results.append(result)
                     time.sleep(time_interval)
                     
+                    
             except KeyboardInterrupt:
                 print('Abort by key interrupt.')
+                self.video_cap.release()
                 return results
         else:
             for i in range(num_im):
                 result = self.capture_frame_by_stream(i)
                 results.append(result)
                 time.sleep(time_interval)
-                
+            
+            self.video_cap.release()
             return results
 
             
