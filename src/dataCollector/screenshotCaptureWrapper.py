@@ -50,10 +50,12 @@ class screenshotCaptureWrapper(imageCollector):
                 current_time = times.get_time(self.tz)
                 print(current_time)
             except Exception as e:
+                print('--- can not get the current time---')
                 print(e)
             try:
                 current_weather = weather.get_weather(self.city)
             except Exception as e:
+                print('---can not get the current weather---')
                 print(e)
 
             return target_img_name, current_time, current_weather
