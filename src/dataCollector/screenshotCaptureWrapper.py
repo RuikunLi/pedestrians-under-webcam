@@ -44,10 +44,15 @@ class screenshotCaptureWrapper(imageCollector):
             self.driver.save_screenshot(
                 os.path.join(dir_path, target_img_name))
             print(target_img_name)
+            current_time = None
+            current_weather = None
             try:
                 current_time = times.get_time(self.tz)
-                current_weather = weather.get_weather(self.city)
                 print(current_time)
+            except Exception as e:
+                print(e)
+            try:
+                current_weather = weather.get_weather(self.city)
             except Exception as e:
                 print(e)
 
