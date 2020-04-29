@@ -45,6 +45,12 @@ else:
     res = collector.capture_frame_by_screenshot_wrapper(num_im=num_im, time_interval=time_interval)
     method = 'screenshot'
 end = datetime.now(pytz.timezone(tz))
-dataUtils.store_as_csv(data=res, target_img_path=collector.target_img_path, image_prefix=collector.image_prefix)
-emailNotification.emailNotification(city=city, num=num_im, time_interval=time_interval, start=start, end=end, url=webcam, method=method, tz=tz)
+try:
+    dataUtils.store_as_csv(data=res, target_img_path=collector.target_img_path, image_prefix=collector.image_prefix)
+except Exception as e:
+    print(e)
+try:
+    emailNotification.emailNotification(city=city, num=num_im, time_interval=time_interval, start=start, end=end, url=webcam, method=method, tz=tz, path=collector.target_img_path)
+except Exception as e:
+    print(e)
 print('------------------End---------------')
