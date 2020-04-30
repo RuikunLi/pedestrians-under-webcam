@@ -21,7 +21,8 @@ class imageCollector(ABC):
         self.city = city
         self.image_prefix = city
         self.path = Path(os.getcwd())
-        self.target_img_path = str(self.path.parent) + '/rawData'
+        self.dir_path = str(self.path.parent) + '/rawData'
+        self.target_img_path = os.path.join(self.dir_path, self.city)
         # self.driver_path = str(self.path) + '/webdrivers'
         self.platform = platform.system()
 
