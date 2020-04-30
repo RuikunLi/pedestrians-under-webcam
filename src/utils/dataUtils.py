@@ -7,7 +7,7 @@ import datetime
 def store_as_csv(data, dir_path, image_prefix):
     try:
         df = pd.DataFrame(np.array(data), columns=['image_name', 'time', 'weather'])
-        os.makedirs(dir_path + '/csvs',exist_ok=True)
+        os.makedirs(dir_path + '/csvs', exist_ok=True)
         df.to_csv(path_or_buf=dir_path + "/csvs/{}.csv" .format(image_prefix))
     except Exception as e:
         print('---store as csv failed---')
