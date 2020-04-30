@@ -30,7 +30,7 @@ class screenshotCaptureWrapper(imageCollector):
         """
 	    
         self.image_prefix = dataUtils.image_prefix_generator(self.city)
-        dir_path = os.path.join(self.target_img_path, self.image_prefix)
+        dir_path = os.path.join(self.target_img_path, self.city)
 
         if self.driver is None:
             print("Web driver is none.")
@@ -43,7 +43,7 @@ class screenshotCaptureWrapper(imageCollector):
             print("Taking screenshot {}...".format(image_index))
             self.driver.save_screenshot(
                 os.path.join(dir_path, target_img_name))
-            print(target_img_name)
+            print(os.path.join(dir_path, target_img_name))
             current_time = None
             current_weather = None
             try:
@@ -76,7 +76,7 @@ class screenshotCaptureWrapper(imageCollector):
         print("The current collecting function is based on capture frame by screenshot.")
         
         results = []
-        dir_path = os.path.join(self.target_img_path, self.image_prefix)
+        dir_path = os.path.join(self.target_img_path, self.city)
         if not os.path.isdir(dir_path):
             os.makedirs(dir_path)
         if num_im <= 0:

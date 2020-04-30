@@ -15,7 +15,7 @@ def emailNotification(city, num, time_interval, start, end, url, method, tz, pat
         
         message = MIMEText(
             """
-            <p> {} Task finished, there are {} samples, time interval is {} minutes  </p>
+            <p> {} task finished, there are {} samples, time interval is {} minutes  </p>
             <p>Start time at webcam timezone: {} </p>
             <p>End time at webcam timezone:{} </p>
             <p> Timezone: {} </p>
@@ -38,6 +38,7 @@ def emailNotification(city, num, time_interval, start, end, url, method, tz, pat
 
         mail.sendmail(sender, receivers, message.as_string())
     except Exception as e:
+        print('---email notification sent failed---')
         print(e)
     finally:
         mail.close()

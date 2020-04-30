@@ -29,8 +29,7 @@ class frameCaptureWrapper(imageCollector):
         # self.init_streamlink()
         self.image_prefix = dataUtils.image_prefix_generator(self.city)
         # video_cap = cv2.VideoCapture(self.stream_url)
-        dir_path = os.path.join(self.target_img_path, self.image_prefix)
-
+        dir_path = os.path.join(self.target_img_path, self.city)
         if self.video_cap is None:
             print("Open webcam [%s] failed." %self.webcam_url)
             return None
@@ -48,7 +47,7 @@ class frameCaptureWrapper(imageCollector):
                 print("Capturing frame %d." % image_index)
                 target_img_name = "{}_{}.png".format(self.image_prefix, image_index)
                 cv2.imwrite(os.path.join(dir_path, target_img_name), frame)
-                print(target_img_name)
+                print(os.path.join(dir_path, target_img_name))
                 
                 current_time = None
                 current_weather = None
@@ -86,9 +85,10 @@ class frameCaptureWrapper(imageCollector):
         
         
         results = []
-        dir_path = os.path.join(self.target_img_path, self.image_prefix)
-        if not os.path.isdir(dir_path):
-            os.makedirs(dir_path)
+        dir_path = os.path.join(self.target_img_path, self.city)
+        # if not os.path.isdir(dir_path):
+        os.makedirs(dir_path, exist_ok=True)
+        print(dir_path)
         if num_im <= 0:
             try:
                 i = 0
