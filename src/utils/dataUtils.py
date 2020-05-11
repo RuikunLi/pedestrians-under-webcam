@@ -83,11 +83,11 @@ def init_google_sheet(sheet, worksheet, columns=['image_name', 'time', 'skyDescr
     except:
         sh = google_client.create(sheet)
         print("Google sheet {} does not exist, now created".format(sheet))
-        
+
         try:
-        sh.share('liruikunbruce@gmail.com', perm_type='user', role='reader')
-        sh.share('pedestriansunderwebcam@gmail.com', perm_type='user', role='reader')
-        sh.share('pedestrianwebcam@modular-rex-275114.iam.gserviceaccount.com', perm_type='user', role='writer')
+            sh.share('liruikunbruce@gmail.com', perm_type='user', role='reader')
+            sh.share('pedestriansunderwebcam@gmail.com', perm_type='user', role='reader')
+            sh.share('pedestrianwebcam@modular-rex-275114.iam.gserviceaccount.com', perm_type='user', role='writer')
         except Exception as e:
             print('---can not share sheet to the others---')
             print(e)
