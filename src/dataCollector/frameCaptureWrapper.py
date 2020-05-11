@@ -25,6 +25,7 @@ class frameCaptureWrapper(imageCollector):
         Returns:
             tuple: The name of target image, the number of persons in an image detected by the model and the current time.
         """
+        result = []
         # image_prefix = self.image_prefix + '_stream'
         # self.init_streamlink()
         self.image_prefix = dataUtils.image_prefix_generator(self.city)
@@ -46,6 +47,7 @@ class frameCaptureWrapper(imageCollector):
                 print("Capturing frame %d." % image_index)
                 target_img_name = "{}_stream_{}.png".format(self.image_prefix, image_index)
                 cv2.imwrite(os.path.join(self.target_img_path, target_img_name), frame)
+                dataUtils.upload_img_to_google_drive(self.google_drive_folder_id, os.path.join(self.target_img_path, target_img_name), target_img_name)
                 print(os.path.join(self.target_img_path, target_img_name))
                 
                 current_time = None
@@ -63,7 +65,12 @@ class frameCaptureWrapper(imageCollector):
                     print('---can not get the current weather---')
                     print(e)
 
-                return target_img_name, current_time, current_weather
+                result.append(target_img_name)
+                result.append(current_time)
+                result.extend(current_weather)
+
+
+                return result
 
     def capture_frame_by_stream_wrapper(self,
                                         num_im,
@@ -93,6 +100,7 @@ class frameCaptureWrapper(imageCollector):
                 while True:
                     i = i + 1
                     result = self.capture_frame_by_stream(i)
+                    dataUtils.insert_to_google_sheet(result, 'collector', self.city, index=i)
                     results.append(result)
                     time.sleep(time_interval)
                     
@@ -104,6 +112,7 @@ class frameCaptureWrapper(imageCollector):
         else:
             for i in range(num_im):
                 result = self.capture_frame_by_stream(i)
+                dataUtils.insert_to_google_sheet(result, 'collector', self.city, index=i)
                 results.append(result)
                 time.sleep(time_interval)
             

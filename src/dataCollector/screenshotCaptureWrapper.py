@@ -28,7 +28,8 @@ class screenshotCaptureWrapper(imageCollector):
             tuple: The name of target image, the number of persons in an image detected by the model and the current time.
         
         """
-	    
+
+        result = []
         self.image_prefix = dataUtils.image_prefix_generator(self.city)
 
         if self.driver is None:
@@ -40,8 +41,8 @@ class screenshotCaptureWrapper(imageCollector):
 
             target_img_name = "{}_screenshot_{}.png".format(self.image_prefix, image_index)
             print("Taking screenshot {}...".format(image_index))
-            self.driver.save_screenshot(
-                os.path.join(self.target_img_path, target_img_name))
+            self.driver.save_screenshot(os.path.join(self.target_img_path, target_img_name))
+            dataUtils.upload_img_to_google_drive(self.google_drive_folder_id, os.path.join(self.target_img_path, target_img_name), target_img_name)
             print(os.path.join(self.target_img_path, target_img_name))
             current_time = None
             current_weather = None
@@ -57,8 +58,11 @@ class screenshotCaptureWrapper(imageCollector):
                 print('---can not get the current weather---')
                 print(e)
 
-            return target_img_name, current_time, current_weather
+            result.append(target_img_name)
+            result.append(current_time)
+            result.extend(current_weather)
 
+            return result
     def capture_frame_by_screenshot_wrapper(self,
                                         num_im=6,
                                         time_interval=10):
@@ -83,6 +87,7 @@ class screenshotCaptureWrapper(imageCollector):
                 while True:
                     i = i + 1
                     result = self.capture_frame_by_screenshot(i)
+                    dataUtils.insert_to_google_sheet(result, 'collector', self.city, index=i)
                     results.append(result)
                     time.sleep(time_interval)
                     
@@ -94,6 +99,7 @@ class screenshotCaptureWrapper(imageCollector):
         else:
             for i in range(num_im):
                 result = self.capture_frame_by_screenshot(i)
+                dataUtils.insert_to_google_sheet(result, 'collector', self.city, index=i)
                 results.append(result)
                 time.sleep(time_interval)
                 

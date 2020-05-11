@@ -8,3 +8,5 @@ timezonefinder
 selenium
 streamlink
 pytz
+gspread 
+pydrive

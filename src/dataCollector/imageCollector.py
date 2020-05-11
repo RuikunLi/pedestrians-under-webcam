@@ -25,6 +25,8 @@ class imageCollector(ABC):
         self.target_img_path = os.path.join(self.dir_path, self.city)
         # self.driver_path = str(self.path) + '/webdrivers'
         self.platform = platform.system()
+        dataUtils.init_google_sheet('collector', self.city)
+        self.google_drive_folder_id = dataUtils.init_google_drive(self.city)
 
         try:
             self.tz = times.tz_finder(city)

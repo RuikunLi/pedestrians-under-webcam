@@ -6,7 +6,7 @@ from email.mime.text import MIMEText
 from email.header import Header
 import platform
 
-def emailNotification(city, num, time_interval, start, end, url, method, tz, path):
+def emailNotification(city, num, time_interval, start, end, url, method, tz, path, googlesheet=None):
     sys = platform.system()
     
     try:
@@ -23,7 +23,8 @@ def emailNotification(city, num, time_interval, start, end, url, method, tz, pat
             <p>Method: {}</p>
             <p>Platform: {}</p>
             <p>Stored Path: {}</p>
-                            """.format(city, num, time_interval/60, start, end, tz, url, method, sys, path), 'html', 'utf-8')
+            <p>Google Sheet: {}</p>
+                            """.format(city, num, time_interval/60, start, end, tz, url, method, sys, path, googlesheet), 'html', 'utf-8')
         
         subject = '{} task notification'.format(city)
         message['Subject'] = Header(subject, 'utf-8')
