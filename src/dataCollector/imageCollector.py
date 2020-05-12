@@ -4,19 +4,21 @@ from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium import webdriver
 import time
-from abc import ABC, abstractmethod
+# from abc import ABC, abstractmethod
 import cv2
 from streamlink import Streamlink
 from pathlib import Path
 from ..utils import weather, times, dataUtils
+from .googleUploader import Uploader
 
 
 
 
 # 先尝试streamlink， 不成就是用screenshot
 
-class imageCollector(ABC):
+class imageCollector(Uploader):
     def __init__(self, webcam_url, city):
+        super().__init__('client_secret.json')
         self.webcam_url = webcam_url
         self.city = city
         self.image_prefix = city
@@ -25,9 +27,15 @@ class imageCollector(ABC):
         self.target_img_path = os.path.join(self.dir_path, self.city)
         # self.driver_path = str(self.path) + '/webdrivers'
         self.platform = platform.system()
-        dataUtils.init_google_sheet('collector', self.city)
-        self.google_drive_folder_id = dataUtils.init_google_drive(self.city)
 
+        #TODO
+        # dataUtils.init_google_sheet('collector', self.city)
+        # self.google_drive_folder_id = dataUtils.init_google_drive(self.city)
+
+        self.google_drive_folder_id = self.init_google_drive(self.city)
+        self.init_google_sheet('collector', self.city)
+
+        
         try:
             self.tz = times.tz_finder(city)
         except:

@@ -42,7 +42,10 @@ class screenshotCaptureWrapper(imageCollector):
             target_img_name = "{}_screenshot_{}.png".format(self.image_prefix, image_index)
             print("Taking screenshot {}...".format(image_index))
             self.driver.save_screenshot(os.path.join(self.target_img_path, target_img_name))
-            dataUtils.upload_img_to_google_drive(self.google_drive_folder_id, os.path.join(self.target_img_path, target_img_name), target_img_name)
+            self.upload_img_to_google_drive(self.google_drive_folder_id, os.path.join(self.target_img_path, target_img_name), target_img_name)
+            
+            #TODO
+            # dataUtils.upload_img_to_google_drive(self.google_drive_folder_id, os.path.join(self.target_img_path, target_img_name), target_img_name)
             print(os.path.join(self.target_img_path, target_img_name))
             current_time = None
             current_weather = None
@@ -87,7 +90,10 @@ class screenshotCaptureWrapper(imageCollector):
                 while True:
                     i = i + 1
                     result = self.capture_frame_by_screenshot(i)
-                    dataUtils.insert_to_google_sheet(result, 'collector', self.city, index=i)
+                    self.insert_to_google_sheet(result, 'collector', self.city, index=i)
+                 
+                    #TODO
+                    # dataUtils.insert_to_google_sheet(result, 'collector', self.city, index=i)
                     results.append(result)
                     time.sleep(time_interval)
                     
@@ -99,7 +105,10 @@ class screenshotCaptureWrapper(imageCollector):
         else:
             for i in range(num_im):
                 result = self.capture_frame_by_screenshot(i)
-                dataUtils.insert_to_google_sheet(result, 'collector', self.city, index=i)
+                self.insert_to_google_sheet(result, 'collector', self.city, index=i)
+
+                #TODO
+                # dataUtils.insert_to_google_sheet(result, 'collector', self.city, index=i)
                 results.append(result)
                 time.sleep(time_interval)
                 
