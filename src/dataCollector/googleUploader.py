@@ -1,13 +1,13 @@
 import gspread
 from google.oauth2.service_account import Credentials
-from pydrive.auth import GoogleAuth
+from pydrive.auth import GoogleAuth, ServiceAccountCredentials
 from pydrive.drive import GoogleDrive
 
 class Uploader():
     def __init__(self, credential):
         self.gauth = GoogleAuth()
         self.scopes = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
-        self.credentials = Credentials.from_service_account_file(credential,scopes=self.scopes)
+        self.credentials = ServiceAccountCredentials.from_json_keyfile_name(credential, self.scopes)
         self.gauth.credentials = self.credentials
         self.drive = GoogleDrive(self.gauth)
         self.gsheet = gspread.authorize(self.credentials)
@@ -38,7 +38,7 @@ class Uploader():
 
     def insert_to_google_sheet(self, values, sheet, worksheet, index):
         try:
-            self.sh = gsheet.open(sheet)
+            self.sh = self.gsheet.open(sheet)
             # for i in sh.worksheets():
             #     print(i.title)
             self.ws = self.sh.worksheet(worksheet)
@@ -77,16 +77,16 @@ class Uploader():
                 city_id = city_folder['id']
 
             try:
-            file_list = self.drive.ListFile({'q': "'root' in parents and trashed=false"}).GetList()
-            for f in file_list:
-                permission_list = [email['emailAddress'] for email in f.GetPermissions()]
-                if 'pedestriansunderwebcam@gmail.com' not in permission_list:
-                    f.InsertPermission({
-                            'type': 'user',
-                            'value': 'pedestriansunderwebcam@gmail.com',
-                            'role': 'reader',
-                            'sendNotificationEmails': 'false'
-                            })
+                file_list = self.drive.ListFile({'q': "'root' in parents and trashed=false"}).GetList()
+                for f in file_list:
+                    permission_list = [email['emailAddress'] for email in f.GetPermissions()]
+                    if 'pedestriansunderwebcam@gmail.com' not in permission_list:
+                        f.InsertPermission({
+                                'type': 'user',
+                                'value': 'pedestriansunderwebcam@gmail.com',
+                                'role': 'reader',
+                                'sendNotificationEmails': 'false'
+                                })
             except Exception as e:
                 print('---can not init file permission---')
                 print(e)
