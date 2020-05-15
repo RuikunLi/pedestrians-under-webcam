@@ -7,6 +7,10 @@ from google.oauth2.service_account import Credentials
 from pydrive.auth import GoogleAuth, ServiceAccountCredentials
 from pydrive.drive import GoogleDrive
 
+#TODO
+def insert_google_drive_permissions():
+    pass
+
 def init_google_drive(city):
     try:
         gauth = GoogleAuth()

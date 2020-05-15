@@ -28,10 +28,6 @@ class imageCollector(Uploader):
         # self.driver_path = str(self.path) + '/webdrivers'
         self.platform = platform.system()
 
-        #TODO
-        # dataUtils.init_google_sheet('collector', self.city)
-        # self.google_drive_folder_id = dataUtils.init_google_drive(self.city)
-
         self.google_drive_folder_id = self.init_google_drive(self.city)
         self.init_google_sheet('collector', self.city)
 
@@ -56,9 +52,15 @@ class imageCollector(Uploader):
         self.streams = self.session.streams(self.webcam_url)
         if self.streams is None:
             raise ValueError("cannot open the stream link %s" % self.webcam_url)
+        try:
+            qlist = list(self.streams.keys())
+            quality = max([q for q in qlist if q[-1].lower() == 'p'])
+        except:
+            quality = list(self.streams.keys())[0]
+            print('---can not find the best stream quality, use the first one---')
 
-        q = list(self.streams.keys())[0]
-        self.stream = self.streams['%s' % q]
+        print('The stream quality is {}'.format(quality))
+        self.stream = self.streams['%s' % quality]
         self.stream_url = self.stream.url
         self.video_cap = cv2.VideoCapture(self.stream_url)
         

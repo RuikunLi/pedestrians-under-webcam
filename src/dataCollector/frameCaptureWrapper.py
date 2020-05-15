@@ -48,9 +48,6 @@ class frameCaptureWrapper(imageCollector):
                 target_img_name = "{}_stream_{}.png".format(self.image_prefix, image_index)
                 cv2.imwrite(os.path.join(self.target_img_path, target_img_name), frame)
                 self.upload_img_to_google_drive(self.google_drive_folder_id, os.path.join(self.target_img_path, target_img_name), target_img_name)
-
-                #TODO
-                # dataUtils.upload_img_to_google_drive(self.google_drive_folder_id, os.path.join(self.target_img_path, target_img_name), target_img_name)
                 print(os.path.join(self.target_img_path, target_img_name))
                 
                 current_time = None
@@ -105,8 +102,6 @@ class frameCaptureWrapper(imageCollector):
                     result = self.capture_frame_by_stream(i)
                     self.insert_to_google_sheet(result, 'collector', self.city, index=i)
 
-                    #TODO
-                    dataUtils.insert_to_google_sheet(result, 'collector', self.city, index=i)
                     results.append(result)
                     time.sleep(time_interval)
                     
@@ -120,8 +115,6 @@ class frameCaptureWrapper(imageCollector):
                 result = self.capture_frame_by_stream(i)
                 self.insert_to_google_sheet(result, 'collector', self.city, index=i)
 
-                #TODO
-                # dataUtils.insert_to_google_sheet(result, 'collector', self.city, index=i)
                 results.append(result)
                 time.sleep(time_interval)
             

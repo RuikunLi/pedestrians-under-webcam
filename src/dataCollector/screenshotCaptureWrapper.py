@@ -44,8 +44,6 @@ class screenshotCaptureWrapper(imageCollector):
             self.driver.save_screenshot(os.path.join(self.target_img_path, target_img_name))
             self.upload_img_to_google_drive(self.google_drive_folder_id, os.path.join(self.target_img_path, target_img_name), target_img_name)
             
-            #TODO
-            # dataUtils.upload_img_to_google_drive(self.google_drive_folder_id, os.path.join(self.target_img_path, target_img_name), target_img_name)
             print(os.path.join(self.target_img_path, target_img_name))
             current_time = None
             current_weather = None
@@ -92,8 +90,6 @@ class screenshotCaptureWrapper(imageCollector):
                     result = self.capture_frame_by_screenshot(i)
                     self.insert_to_google_sheet(result, 'collector', self.city, index=i)
                  
-                    #TODO
-                    # dataUtils.insert_to_google_sheet(result, 'collector', self.city, index=i)
                     results.append(result)
                     time.sleep(time_interval)
                     
@@ -106,9 +102,6 @@ class screenshotCaptureWrapper(imageCollector):
             for i in range(num_im):
                 result = self.capture_frame_by_screenshot(i)
                 self.insert_to_google_sheet(result, 'collector', self.city, index=i)
-
-                #TODO
-                # dataUtils.insert_to_google_sheet(result, 'collector', self.city, index=i)
                 results.append(result)
                 time.sleep(time_interval)
                 
