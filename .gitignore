@@ -1,7 +1,7 @@
 # File created using '.gitignore Generator' for Visual Studio Code: https://bit.ly/vscode-gig
 
-# Created by https://www.gitignore.io/api/windows,visualstudiocode,python,macos,linux,git,jupyternotebooks
-# Edit at https://www.gitignore.io/?templates=windows,visualstudiocode,python,macos,linux,git,jupyternotebooks
+# Created by https://www.gitignore.io/api/windows,visualstudiocode,python,macos,linux,jupyternotebooks,git
+# Edit at https://www.gitignore.io/?templates=windows,visualstudiocode,python,macos,linux,jupyternotebooks,git
 
 ### Git ###
 # Created by git for backups. To disable backups in Git:
@@ -217,12 +217,12 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.gitignore.io/api/windows,visualstudiocode,python,macos,linux,git,jupyternotebooks
+# End of https://www.gitignore.io/api/windows,visualstudiocode,python,macos,linux,jupyternotebooks,git
 
 # Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
 
 geckodriver.log
-client_secret.json
+*.json
 !**/__pycache__/
 *.ipynb
 *.png
