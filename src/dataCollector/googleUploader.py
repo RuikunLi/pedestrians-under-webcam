@@ -13,30 +13,39 @@ class Uploader():
         self.gsheet = gspread.authorize(self.credentials)
 
     def init_google_sheet(self, sheet, worksheet, columns=['image_name', 'time', 'skyDescription', 'temperature', 'temperatureDesc', 'humidity', 'windSpeed']):
+        sheet = sheet.lower()
+        worksheet = worksheet.lower()
         try:
-            self.sh = self.gsheet.open(sheet)
-        except:
-            self.sh = self.gsheet.create(sheet)
-            print("Google sheet {} does not exist, now created".format(sheet))
-
             try:
-                self.sh.share('liruikunbruce@gmail.com', perm_type='user', role='reader', notify=False)
-                self.sh.share('pedestriansunderwebcam@gmail.com', perm_type='user', role='reader', notify=False)
-                self.sh.share('pedestrianwebcam@modular-rex-275114.iam.gserviceaccount.com', perm_type='user', role='writer', notify=False)
-            except Exception as e:
-                print('---can not share sheet to the others---')
-                print(e)
-        try:
-            self.ws = self.sh.worksheet(worksheet)
-        except:
-            self.sh.add_worksheet(title=worksheet, rows=100, cols=20)
-            self.ws = self.sh.worksheet(worksheet)
-            print("Worksheet {} does not exist, now created".format(worksheet))
-        if self.ws.frozen_row_count == 0:
-            self.ws.insert_row(columns, index=1)
-            self.ws.freeze(1)
+                self.sh = self.gsheet.open(sheet)
+            except:
+                self.sh = self.gsheet.create(sheet)
+                print("Google sheet {} does not exist, now created".format(sheet))
+
+                try:
+                    self.sh.share('liruikunbruce@gmail.com', perm_type='user', role='reader', notify=False)
+                    self.sh.share('pedestriansunderwebcam@gmail.com', perm_type='user', role='reader', notify=False)
+                    self.sh.share('pedestrianwebcam@modular-rex-275114.iam.gserviceaccount.com', perm_type='user', role='writer', notify=False)
+                except Exception as e:
+                    print('---can not share sheet to the others---')
+                    print(e)
+            try:
+                self.ws = self.sh.worksheet(worksheet)
+            except:
+                self.sh.add_worksheet(title=worksheet, rows=100, cols=20)
+                self.ws = self.sh.worksheet(worksheet)
+                print("Worksheet {} does not exist, now created".format(worksheet))
+            if self.ws.frozen_row_count == 0:
+                self.ws.insert_row(columns, index=1)
+                self.ws.freeze(1)
+            print('google sheet {}, worksheet {} initialized'.format(sheet, worksheet))
+        except Exception as e:
+            print('---init google sheet failed---')
+            print(e)
 
     def insert_to_google_sheet(self, values, sheet, worksheet, index):
+        sheet = sheet.lower()
+        worksheet = worksheet.lower()
         try:
             self.sh = self.gsheet.open(sheet)
             # for i in sh.worksheets():
@@ -44,10 +53,10 @@ class Uploader():
             self.ws = self.sh.worksheet(worksheet)
             #start at 1 and 1 is col name.
             self.ws.insert_row(values, index=index+2)
-
+            print('index {} uploaded to google sheet'.format(index))
             # return sh.url
         except Exception as e:
-            print('---upload to google drive failed---')
+            print('---upload to google sheet failed---')
             print(e)
 
     def init_google_drive(self, city):
@@ -76,21 +85,21 @@ class Uploader():
                 city_folder.Upload()
                 city_id = city_folder['id']
 
-            try:
-                file_list = self.drive.ListFile({'q': "'root' in parents and trashed=false"}).GetList()
-                for f in file_list:
-                    permission_list = [email['emailAddress'] for email in f.GetPermissions()]
-                    if 'pedestriansunderwebcam@gmail.com' not in permission_list:
-                        f.InsertPermission({
-                                'type': 'user',
-                                'value': 'pedestriansunderwebcam@gmail.com',
-                                'role': 'reader',
-                                'sendNotificationEmails': 'false'
-                                })
-            except Exception as e:
-                print('---can not init file permission---')
-                print(e)
-
+            # try:
+            #     file_list = self.drive.ListFile({'q': "'root' in parents and trashed=false"}).GetList()
+            #     for f in file_list:
+            #         permission_list = [email['emailAddress'] for email in f.GetPermissions()]
+            #         if 'pedestriansunderwebcam@gmail.com' not in permission_list:
+            #             f.InsertPermission({
+            #                     'type': 'user',
+            #                     'value': 'pedestriansunderwebcam@gmail.com',
+            #                     'role': 'reader',
+            #                     'sendNotificationEmails': 'false'
+            #                     })
+            # except Exception as e:
+            #     print('---can not init file permission---')
+            #     print(e)
+            print('google dirve initialized')
             return city_id
         except Exception as e:
             print('---can not create folders---')
@@ -102,6 +111,7 @@ class Uploader():
             file = self.drive.CreateFile({'title':'{}'.format(name), "parents": [{"kind": "drive#fileLink", "id": folder_id}]})
             file.SetContentFile(img)
             file.Upload()
+            print('image {} uploaded'.format(img))
         except Exception as e:
             print('---can not upload {}'.format(img))
             print(e)

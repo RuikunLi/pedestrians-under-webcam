@@ -27,3 +27,6 @@ def tz_finder(city):
     tz = tf.timezone_at(lng=location.longitude, lat=location.latitude)
 
     return tz
+
+# if __name__ == "__main__":
+#     print(tz_finder('Elburg'))

@@ -46,6 +46,7 @@ else:
     res = collector.capture_frame_by_screenshot_wrapper(num_im=num_im, time_interval=time_interval)
     method = 'screenshot'
 end = datetime.now(pytz.timezone(tz))
+dataUtils.init_permisson_google_drive(role='writer')
 dataUtils.store_as_csv(data=res, dir_path=collector.dir_path, image_prefix=collector.image_prefix)
 emailNotification.emailNotification(city=city, num=num_im, time_interval=time_interval, start=start, end=end, url=webcam, method=method, tz=tz, path=collector.dir_path)
 

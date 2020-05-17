@@ -18,7 +18,7 @@ from .googleUploader import Uploader
 
 class imageCollector(Uploader):
     def __init__(self, webcam_url, city):
-        super().__init__('client_secret.json')
+        super().__init__('client_secrets.json')
         self.webcam_url = webcam_url
         self.city = city
         self.image_prefix = city

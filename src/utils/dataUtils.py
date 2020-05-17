@@ -7,47 +7,16 @@ from google.oauth2.service_account import Credentials
 from pydrive.auth import GoogleAuth, ServiceAccountCredentials
 from pydrive.drive import GoogleDrive
 
-#TODO
-def insert_google_drive_permissions():
-    pass
-
-def init_google_drive(city):
+def init_permisson_google_drive(shared_user='pedestriansunderwebcam@gmail.com', role='reader'):
     try:
         gauth = GoogleAuth()
         scope = ['https://www.googleapis.com/auth/drive']
-        gauth.credentials = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
+        gauth.credentials = ServiceAccountCredentials.from_json_keyfile_name('client_secrets.json', scope)
         drive = GoogleDrive(gauth)
     except Exception as e:
         print('---can not connect to google drive---')
         print(e)
     
-    try:
-        titleList = []
-        folderList = drive.ListFile({'q': "mimeType = 'application/vnd.google-apps.folder'"}).GetList()
-        for folder in folderList:
-            # print('Title: %s, ID: %s' % (file['title'], file['id']))
-            # Get the folder ID that you want
-            if(folder['title'] == "rawData"):
-                rawData_id = folder['id']
-            if(folder['title'] == city):
-                city_id = folder['id']
-            titleList.append(folder['title'])
-        if 'rawData' not in titleList:
-            folder_metadata = {'title' : 'rawData', 'mimeType' : 'application/vnd.google-apps.folder'}
-            rawData = drive.CreateFile(folder_metadata)
-            rawData.Upload()
-            rawData_id = rawData['id']
-
-        # Create a sub-directory
-        # Make sure to assign it the proper parent ID
-        if city not in titleList:
-            city_folder = drive.CreateFile({'title': '{}'.format(city), 'mimeType' : 'application/vnd.google-apps.folder', 'parents':[{'id':rawData_id}]})
-            city_folder.Upload()
-            city_id = city_folder['id']
-        return city_id
-    except Exception as e:
-        print('---can not create folders---')
-        print(e)
     try:
         
         file_list = drive.ListFile({'q': "'root' in parents and trashed=false"}).GetList()
@@ -56,8 +25,8 @@ def init_google_drive(city):
             if 'pedestriansunderwebcam@gmail.com' not in permission_list:
                 f.InsertPermission({
                         'type': 'user',
-                        'value': 'pedestriansunderwebcam@gmail.com',
-                        'role': 'reader',
+                        'value': shared_user,
+                        'role': role,
                         'sendNotificationEmails': 'false'
                         })
     except Exception as e:
@@ -71,7 +40,7 @@ def upload_img_to_google_drive(folder_id, img, name):
     try:
         gauth = GoogleAuth()
         scope = ['https://www.googleapis.com/auth/drive']
-        gauth.credentials = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
+        gauth.credentials = ServiceAccountCredentials.from_json_keyfile_name('client_secrets.json', scope)
         drive = GoogleDrive(gauth)
     except Exception as e:
         print('---can not connect to google drive---')
@@ -101,7 +70,7 @@ def upload_img_to_google_drive(folder_id, img, name):
 def init_google_sheet(sheet, worksheet, columns=['image_name', 'time', 'skyDescription', 'temperature', 'temperatureDesc', 'humidity', 'windSpeed']):
     try:
         scopes = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
-        credentials = Credentials.from_service_account_file('client_secret.json',scopes=scopes)
+        credentials = Credentials.from_service_account_file('client_secrets.json',scopes=scopes)
         google_client = gspread.authorize(credentials)
     except Exception as e:
         print("---can not connect to google sheet---")
@@ -135,7 +104,7 @@ def init_google_sheet(sheet, worksheet, columns=['image_name', 'time', 'skyDescr
 def insert_to_google_sheet(values, sheet, worksheet, index):
     try:
         scopes = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
-        credentials = Credentials.from_service_account_file('client_secret.json',scopes=scopes)
+        credentials = Credentials.from_service_account_file('client_secrets.json',scopes=scopes)
         google_client = gspread.authorize(credentials)
         sh = google_client.open(sheet)
         # for i in sh.worksheets():
@@ -155,7 +124,7 @@ def insert_to_google_sheet(values, sheet, worksheet, index):
 
 def store_as_csv(data, dir_path, image_prefix, columns=['image_name', 'time', 'skyDescription', 'temperature', 'temperatureDesc', 'humidity', 'windSpeed']):
     try:
-        df = pd.DataFrame(np.array(data), columns=columns)
+        df = pd.DataFrame(data, columns=columns)
         os.makedirs(dir_path + '/csvs', exist_ok=True)
         df.to_csv(path_or_buf=dir_path + "/csvs/{}.csv" .format(image_prefix))
         print('###csv stored###')

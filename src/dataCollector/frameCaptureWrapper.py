@@ -39,9 +39,13 @@ class frameCaptureWrapper(imageCollector):
                 self.video_cap.release()
                 try:
                     self.init_streamlink()
-                except Exception as e:
-                    print(e)
-                    raise ValueError("Captured frame is broken.")
+                except:
+                    try:
+                        self.video_cap.release()
+                        self.init_streamlink()
+                    except Exception as e:
+                        print(e)
+                        raise ValueError("Captured frame is broken.")
             else:
                 print("-----------------------------------------------------")
                 print("Capturing frame %d." % image_index)
