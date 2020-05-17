@@ -14,7 +14,8 @@ class Uploader():
 
     def init_google_sheet(self, sheet, worksheet, columns=['image_name', 'time', 'skyDescription', 'temperature', 'temperatureDesc', 'humidity', 'windSpeed']):
         sheet = sheet.lower()
-        worksheet = worksheet.lower()
+        if worksheet != 'NYC':
+            worksheet = worksheet.lower()
         try:
             try:
                 self.sh = self.gsheet.open(sheet)
@@ -45,7 +46,8 @@ class Uploader():
 
     def insert_to_google_sheet(self, values, sheet, worksheet, index):
         sheet = sheet.lower()
-        worksheet = worksheet.lower()
+        if worksheet != 'NYC':
+            worksheet = worksheet.lower()
         try:
             self.sh = self.gsheet.open(sheet)
             # for i in sh.worksheets():
