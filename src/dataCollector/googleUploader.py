@@ -6,7 +6,7 @@ from pydrive.drive import GoogleDrive
 class Uploader():
     def __init__(self, credential):
         self.gauth = GoogleAuth()
-        self.scopes = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive'， 'https://www.googleapis.com/auth/drive.file']
+        self.scopes = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/drive.file']
         self.credentials = ServiceAccountCredentials.from_json_keyfile_name(credential, self.scopes)
         self.gauth.credentials = self.credentials
         self.drive = GoogleDrive(self.gauth)
