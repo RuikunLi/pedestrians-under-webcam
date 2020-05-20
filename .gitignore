@@ -226,3 +226,6 @@ geckodriver.log
 !**/__pycache__/
 *.ipynb
 *.png
+packages
+*.whl
+packages.py

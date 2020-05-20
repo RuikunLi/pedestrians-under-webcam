@@ -1,6 +1,6 @@
 pandas
 imageai
-tensorflow==1.4.0
+tensorflow==1.14.0
 keras 
 opencv-python
 geopy
