@@ -54,10 +54,14 @@ class imageCollector(Uploader):
             raise ValueError("cannot open the stream link %s" % self.webcam_url)
         try:
             qlist = list(self.streams.keys())
+            print(qlist)
             quality = max([q for q in qlist if q[-1].lower() == 'p'])
         except:
-            quality = list(self.streams.keys())[0]
-            print('---can not find the best stream quality, use the first one---')
+            try:
+                quality = 'best'
+            except:
+                quality = list(self.streams.keys())[0]
+                print('---can not find the best stream quality, use the first one---')
 
         print('The stream quality is {}'.format(quality))
         self.stream = self.streams['%s' % quality]
@@ -106,7 +110,7 @@ class imageCollector(Uploader):
             pass
 
         self.driver.get(self.webcam_url)
-        time.sleep(15)  # Jump over the ads
+        time.sleep(25)  # Jump over the ads
 
     # @abstractmethod
     # def capture_frame_by_stream_wrapper(self, image_prefix,

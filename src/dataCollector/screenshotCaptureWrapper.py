@@ -39,7 +39,7 @@ class screenshotCaptureWrapper(imageCollector):
             print("-----------------------------------------------------")
 
 
-            target_img_name = "{}_screenshot_{}.png".format(self.image_prefix, image_index)
+            target_img_name = "{}_screenshot_{}_{}.png".format(self.image_prefix, self.platform, image_index)
             print("Taking screenshot {}...".format(image_index))
             self.driver.save_screenshot(os.path.join(self.target_img_path, target_img_name))
             self.upload_img_to_google_drive(self.google_drive_folder_id, os.path.join(self.target_img_path, target_img_name), target_img_name)
@@ -62,27 +62,46 @@ class screenshotCaptureWrapper(imageCollector):
             result.append(target_img_name)
             result.append(current_time)
             result.extend(current_weather)
+            result.append(self.platform)
 
             return result
     def capture_frame_by_screenshot_wrapper(self,
                                         num_im=6,
-                                        time_interval=10):
+                                        time_interval=10,
+                                        bsize=2):
         """
         A wrapper of the function capture_frame_by_stream.
         
         Args:
             num_im (int): How many images will be taken.
-            time_interval (int): Time interval of taking next image, the unit is second.        
+            time_interval (int): Time interval of taking next image, the unit is second.  
+            bszie: batch size.      
         Returns:
             void
         
         """
-        print("The current collecting function is based on capture frame by screenshot.")
-        
         results = []
         # if not os.path.isdir(target_img_path):
         os.makedirs(self.target_img_path, exist_ok=True)
-        if num_im <= 0:
+        print("The current collecting function is based on capture frame by screenshot.")
+        if (num_im-1) * time_interval/60 >= 30 or num_im >= 100:
+            print("time range is too long or num of images is too big, will take batch， batch size is {}".format(bsize))
+            b = 0
+            for batch in range(0, num_im, bsize):
+                vars()['batch_'+str(b)] = [i for i in range(num_im)][batch:batch+bsize]
+                indexes = eval('batch_'+str(b))
+                print("The current batch is " + str(indexes))
+                for i in indexes:
+                    result = self.capture_frame_by_screenshot(i)
+                    self.insert_to_google_sheet(result, 'collector', self.city, index=i)
+                    results.append(result)
+                    time.sleep(time_interval)
+                b = b + 1     
+            if self.driver is not None:
+                self.driver.quit()
+
+            return results
+        elif num_im <= 0:
             try:
                 i = 0
                 while True:

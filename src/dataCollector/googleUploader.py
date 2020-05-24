@@ -12,7 +12,7 @@ class Uploader():
         self.drive = GoogleDrive(self.gauth)
         self.gsheet = gspread.authorize(self.credentials)
 
-    def init_google_sheet(self, sheet, worksheet, columns=['image_name', 'time', 'skyDescription', 'temperature', 'temperatureDesc', 'humidity', 'windSpeed']):
+    def init_google_sheet(self, sheet, worksheet, columns=['image_name', 'time', 'skyDescription', 'temperature', 'temperatureDesc', 'humidity', 'windSpeed', 'system']):
         sheet = sheet.lower()
         if worksheet != 'NYC':
             worksheet = worksheet.lower()
