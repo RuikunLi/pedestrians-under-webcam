@@ -59,11 +59,15 @@ class screenshotCaptureWrapper(imageCollector):
                 print('---can not get the current weather---')
                 print(e)
 
-            result.append(target_img_name)
-            result.append(current_time)
-            result.extend(current_weather)
-            result.append(self.platform)
-
+            try:
+                result.append(target_img_name)
+                result.append(current_time)
+                result.extend(current_weather)
+                result.append(self.platform)
+            except Exception as e:
+                print('---can not get result---')
+                print(e)
+                
             return result
     def capture_frame_by_screenshot_wrapper(self,
                                         num_im=6,
