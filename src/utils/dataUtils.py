@@ -122,7 +122,7 @@ def insert_to_google_sheet(values, sheet, worksheet, index):
 
 
 
-def store_as_csv(data, dir_path, image_prefix, columns=['image_name', 'time', 'skyDescription', 'temperature', 'temperatureDesc', 'humidity', 'windSpeed']):
+def store_as_csv(data, dir_path, image_prefix, columns=['image_name', 'time', 'skyDescription', 'temperature', 'temperatureDesc', 'humidity', 'windSpeed', 'system']):
     try:
         df = pd.DataFrame(data, columns=columns)
         os.makedirs(dir_path + '/csvs', exist_ok=True)
