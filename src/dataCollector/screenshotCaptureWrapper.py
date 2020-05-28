@@ -96,11 +96,14 @@ class screenshotCaptureWrapper(imageCollector):
                 indexes = eval('batch_'+str(b))
                 print("The current batch is " + str(indexes))
                 for i in indexes:
-                    result = self.capture_frame_by_screenshot(i)
-                    self.insert_to_google_sheet(result, 'collector', self.city, index=i)
-                    results.append(result)
-                    time.sleep(time_interval)
-                b = b + 1     
+                    try:
+                        result = self.capture_frame_by_screenshot(i)
+                        self.insert_to_google_sheet(result, 'collector', self.city, index=i)
+                        results.append(result)
+                        time.sleep(time_interval)
+                    except Exception as e:
+                        print(e)
+                    b = b + 1     
             if self.driver is not None:
                 self.driver.quit()
 
@@ -109,13 +112,15 @@ class screenshotCaptureWrapper(imageCollector):
             try:
                 i = 0
                 while True:
-                    i = i + 1
-                    result = self.capture_frame_by_screenshot(i)
-                    self.insert_to_google_sheet(result, 'collector', self.city, index=i)
-                 
-                    results.append(result)
-                    time.sleep(time_interval)
+                    try:
+                        i = i + 1
+                        result = self.capture_frame_by_screenshot(i)
+                        self.insert_to_google_sheet(result, 'collector', self.city, index=i)
                     
+                        results.append(result)
+                        time.sleep(time_interval)
+                    except Exception as e:
+                        print(e)
             except KeyboardInterrupt:
                 print('Abort by key interrupt.')
                 if self.driver is not None:
@@ -123,10 +128,13 @@ class screenshotCaptureWrapper(imageCollector):
                 return results
         else:
             for i in range(num_im):
-                result = self.capture_frame_by_screenshot(i)
-                self.insert_to_google_sheet(result, 'collector', self.city, index=i)
-                results.append(result)
-                time.sleep(time_interval)
+                try:
+                    result = self.capture_frame_by_screenshot(i)
+                    self.insert_to_google_sheet(result, 'collector', self.city, index=i)
+                    results.append(result)
+                    time.sleep(time_interval)
+                except Exception as e:
+                    print(e)
                 
             if self.driver is not None:
                 self.driver.quit()
