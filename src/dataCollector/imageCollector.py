@@ -56,17 +56,24 @@ class imageCollector(Uploader):
             qlist = list(self.streams.keys())
             print(qlist)
             quality = max([q for q in qlist if q[-1].lower() == 'p'])
+            print('The stream quality is {}'.format(quality))
+            self.stream = self.streams['%s' % quality]
+            self.stream_url = self.stream.url
+            self.video_cap = cv2.VideoCapture(self.stream_url)
         except:
             try:
                 quality = 'best'
+                print('The stream quality is {}'.format(quality))
+                self.stream = self.streams['%s' % quality]
+                self.stream_url = self.stream.url
+                self.video_cap = cv2.VideoCapture(self.stream_url)
             except:
                 quality = list(self.streams.keys())[0]
                 print('---can not find the best stream quality, use the first one---')
-
-        print('The stream quality is {}'.format(quality))
-        self.stream = self.streams['%s' % quality]
-        self.stream_url = self.stream.url
-        self.video_cap = cv2.VideoCapture(self.stream_url)
+                print('The stream quality is {}'.format(quality))
+                self.stream = self.streams['%s' % quality]
+                self.stream_url = self.stream.url
+                self.video_cap = cv2.VideoCapture(self.stream_url)
         
 
     def init_webdriver(self):
