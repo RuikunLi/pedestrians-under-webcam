@@ -68,12 +68,16 @@ class imageCollector(Uploader):
                 self.stream_url = self.stream.url
                 self.video_cap = cv2.VideoCapture(self.stream_url)
             except:
-                quality = list(self.streams.keys())[0]
-                print('---can not find the best stream quality, use the first one---')
-                print('The stream quality is {}'.format(quality))
-                self.stream = self.streams['%s' % quality]
-                self.stream_url = self.stream.url
-                self.video_cap = cv2.VideoCapture(self.stream_url)
+                try:
+                    quality = list(self.streams.keys())[0]
+                    print('---can not find the best stream quality, use the first one---')
+                    print('The stream quality is {}'.format(quality))
+                    self.stream = self.streams['%s' % quality]
+                    self.stream_url = self.stream.url
+                    self.video_cap = cv2.VideoCapture(self.stream_url)
+                except Exception as e:
+                    print(e)
+                    raise ValueError("cannot open the stream link %s" % self.webcam_url)
         
 
     def init_webdriver(self):
