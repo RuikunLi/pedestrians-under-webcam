@@ -112,13 +112,10 @@ class frameCaptureWrapper(imageCollector):
                 indexes = eval('batch_'+str(b))
                 print("The current batch is " + str(indexes))
                 for i in indexes:
-                    try:
-                        result = self.capture_frame_by_stream(i) 
-                        self.insert_to_google_sheet(result, 'collector', self.city, index=i)
-                        results.append(result)
-                        time.sleep(time_interval)
-                    except Exception as e:
-                        print(e)
+                    result = self.capture_frame_by_stream(i) 
+                    self.insert_to_google_sheet(result, 'collector', self.city, index=i)
+                    results.append(result)
+                    time.sleep(time_interval)
                 b = b + 1     
 
             return results
@@ -126,16 +123,12 @@ class frameCaptureWrapper(imageCollector):
             try:
                 i = 0
                 while True:
-                    try:
-                        i = i + 1
-                        result = self.capture_frame_by_stream(i)
-                        self.insert_to_google_sheet(result, 'collector', self.city, index=i)
+                    i = i + 1
+                    result = self.capture_frame_by_stream(i)
+                    self.insert_to_google_sheet(result, 'collector', self.city, index=i)
 
-                        results.append(result)
-                        time.sleep(time_interval)
-                    except Exception as e:
-                        print(e)
-                    
+                    results.append(result)
+                    time.sleep(time_interval)
                     
             except KeyboardInterrupt:
                 print('Abort by key interrupt.')
@@ -143,15 +136,11 @@ class frameCaptureWrapper(imageCollector):
                 return results
         else:
             for i in range(num_im):
-                try:
                     result = self.capture_frame_by_stream(i)
                     self.insert_to_google_sheet(result, 'collector', self.city, index=i)
 
                     results.append(result)
                     time.sleep(time_interval)
-                except Exception as e:
-                    print(e)
-            
             # self.video_cap.release()
             return results
 

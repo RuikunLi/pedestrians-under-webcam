@@ -22,12 +22,16 @@ time_interval = int(time * 60)
 # time_interval = 5
 
 webcam = webcams.webcams[city]
-tz = tz_finder(city)
-start = datetime.now(pytz.timezone(tz))
-print('------------------Start---------------')
-print('The current is webcam is from {}, timezone is {}, required the number of images is {}, time interval is {} minutes'.format(city, tz, num_im, time_interval/60))
+try:
+    city_tz = city.split('_', 1)[0]
+    tz = tz_finder(city_tz)
+    start = datetime.now(pytz.timezone(tz))
+    print('------------------Start---------------')
+    print('The current is webcam is from {}, timezone is {}, required the number of images is {}, time interval is {} minutes'.format(city, tz, num_im, time_interval/60))
+except Exception as e:
+    print(e)
 
-bystreamflag = True
+bystreamflag = False
 
 if bystreamflag:
     try:
