@@ -31,7 +31,7 @@ try:
 except Exception as e:
     print(e)
 
-bystreamflag = False
+bystreamflag = True
 
 if bystreamflag:
     try:
