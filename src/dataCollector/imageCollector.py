@@ -99,12 +99,14 @@ class imageCollector(Uploader):
         firefox_profile.set_preference('media.autoplay.default', 0)
         # firefox_profile.set_preference('media.autoplay.allow-muted', True)
 
-        if self.platform != 'Windows':
-            os.system("chmod +x {}".format(exec_path))
         
         try:
             exec_path = str(self.path) + '/webdrivers/{}/geckodriver'.format(self.platform)
             print(exec_path)
+
+            if self.platform != 'Windows':
+                os.system("chmod +x {}".format(exec_path))
+            
             options = FirefoxOptions()
             options.headless = True
             # options.add_argument("window-size=1920,1080")
