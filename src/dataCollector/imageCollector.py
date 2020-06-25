@@ -107,7 +107,7 @@ class imageCollector(Uploader):
         try:
             
             options = FirefoxOptions()
-            # options.headless = True
+            options.headless = True
             # options.add_argument("window-size=1920,1080")
             print(self.webcam)
             self.driver = webdriver.Firefox(firefox_profile=firefox_profile, options=options, executable_path=exec_path)
