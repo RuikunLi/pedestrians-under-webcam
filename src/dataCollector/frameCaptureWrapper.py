@@ -69,11 +69,13 @@ class frameCaptureWrapper(imageCollector):
                 except Exception as e:
                     print('---can not get the current weather---')
                     print(e)
+                for func in [result.append(target_img_name),
+                        result.append(current_time),
+                        result.extend(current_weather),
+                        result.append(self.platform)  ]
+
                 try:
-                    result.append(target_img_name)
-                    result.append(current_time)
-                    result.extend(current_weather)
-                    result.append(self.platform)
+                    func()
                 except Exception as e:
                     print('---can not get result---')
                     print(e)
