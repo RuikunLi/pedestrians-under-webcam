@@ -21,16 +21,16 @@ class imageCollector(Uploader):
     def __init__(self, webcam, city):
         super().__init__('client_secrets.json')
         self.webcam = webcam #dict 
-        self.city = city
+        self.city = city.split('_', 1)[0]
         self.image_prefix = city
         self.path = Path(os.getcwd())
         self.dir_path = str(self.path.parent) + '/rawData'
-        self.target_img_path = os.path.join(self.dir_path, self.city)
+        self.target_img_path = os.path.join(self.dir_path, self.image_prefix)
         # self.driver_path = str(self.path) + '/webdrivers'
         self.platform = platform.system()
 
-        self.google_drive_folder_id = self.init_google_drive(self.city)
-        self.init_google_sheet('collector', self.city)
+        self.google_drive_folder_id = self.init_google_drive(self.image_prefix)
+        self.init_google_sheet('collector', self.image_prefix)
 
         
         try:

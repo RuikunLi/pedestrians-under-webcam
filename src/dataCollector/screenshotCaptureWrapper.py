@@ -30,7 +30,7 @@ class screenshotCaptureWrapper(imageCollector):
         """
 
         result = []
-        self.image_prefix = dataUtils.image_prefix_generator(self.city)
+        image_prefix = dataUtils.image_prefix_generator(self.image_prefix)
 
         if self.driver is None:
             print("Web driver is none.")
@@ -39,7 +39,7 @@ class screenshotCaptureWrapper(imageCollector):
             print("-----------------------------------------------------")
 
 
-            target_img_name = "{}_screenshot_{}_{}.png".format(self.image_prefix, self.platform, image_index)
+            target_img_name = "{}_screenshot_{}_{}.png".format(image_prefix, self.platform, image_index)
             print("Taking screenshot {}...".format(image_index))
             self.driver.save_screenshot(os.path.join(self.target_img_path, target_img_name))
             self.upload_img_to_google_drive(self.google_drive_folder_id, os.path.join(self.target_img_path, target_img_name), target_img_name)
@@ -54,7 +54,7 @@ class screenshotCaptureWrapper(imageCollector):
                 print('--- can not get the current time---')
                 print(e)
             try:
-                current_weather = weather.get_weather(self.city)
+                current_weather = weather.get_weather(self.image_prefix)
             except Exception as e:
                 print('---can not get the current weather---')
                 print(e)
@@ -100,7 +100,7 @@ class screenshotCaptureWrapper(imageCollector):
                 for i in indexes:
                     try:
                         result = self.capture_frame_by_screenshot(i)
-                        self.insert_to_google_sheet(result, 'collector', self.city, index=i)
+                        self.insert_to_google_sheet(result, 'collector', self.image_prefix, index=i)
                         results.append(result)
                         time.sleep(time_interval)
                     except Exception as e:
@@ -117,7 +117,7 @@ class screenshotCaptureWrapper(imageCollector):
                     try:
                         i = i + 1
                         result = self.capture_frame_by_screenshot(i)
-                        self.insert_to_google_sheet(result, 'collector', self.city, index=i)
+                        self.insert_to_google_sheet(result, 'collector', self.image_prefix, index=i)
                     
                         results.append(result)
                         time.sleep(time_interval)
@@ -132,7 +132,7 @@ class screenshotCaptureWrapper(imageCollector):
             for i in range(num_im):
                 try:
                     result = self.capture_frame_by_screenshot(i)
-                    self.insert_to_google_sheet(result, 'collector', self.city, index=i)
+                    self.insert_to_google_sheet(result, 'collector', self.image_prefix, index=i)
                     results.append(result)
                     time.sleep(time_interval)
                 except Exception as e:

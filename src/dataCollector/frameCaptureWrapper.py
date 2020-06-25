@@ -27,9 +27,9 @@ class frameCaptureWrapper(imageCollector):
         """
         self.init_streamlink()
         result = []
-        # image_prefix = self.image_prefix + '_stream'
+        # image_prefix = image_prefix + '_stream'
         # self.init_streamlink()
-        self.image_prefix = dataUtils.image_prefix_generator(self.city)
+        image_prefix = dataUtils.image_prefix_generator(self.image_prefix)
         # video_cap = cv2.VideoCapture(self.stream_url)
         if self.video_cap is None:
             print("Open webcam [%s] failed." %self.webcam_url)
@@ -50,7 +50,7 @@ class frameCaptureWrapper(imageCollector):
             else:
                 print("-----------------------------------------------------")
                 print("Capturing frame %d." % image_index)
-                target_img_name = "{}_stream_{}_{}.png".format(self.image_prefix, self.platform, image_index)
+                target_img_name = "{}_stream_{}_{}.png".format(image_prefix, self.platform, image_index)
                 cv2.imwrite(os.path.join(self.target_img_path, target_img_name), frame)
                 self.upload_img_to_google_drive(self.google_drive_folder_id, os.path.join(self.target_img_path, target_img_name), target_img_name)
                 print(os.path.join(self.target_img_path, target_img_name))
@@ -65,7 +65,7 @@ class frameCaptureWrapper(imageCollector):
                     print('--- can not get the current time---')
                     print(e)
                 try:
-                    current_weather = weather.get_weather(self.city)
+                    current_weather = weather.get_weather(self.image_prefix)
                 except Exception as e:
                     print('---can not get the current weather---')
                     print(e)
@@ -115,7 +115,7 @@ class frameCaptureWrapper(imageCollector):
                 print("The current batch is " + str(indexes))
                 for i in indexes:
                     result = self.capture_frame_by_stream(i) 
-                    self.insert_to_google_sheet(result, 'collector', self.city, index=i)
+                    self.insert_to_google_sheet(result, 'collector', self.image_prefix, index=i)
                     results.append(result)
                     time.sleep(time_interval)
                 b = b + 1     
@@ -127,7 +127,7 @@ class frameCaptureWrapper(imageCollector):
                 while True:
                     i = i + 1
                     result = self.capture_frame_by_stream(i)
-                    self.insert_to_google_sheet(result, 'collector', self.city, index=i)
+                    self.insert_to_google_sheet(result, 'collector', self.image_prefix, index=i)
 
                     results.append(result)
                     time.sleep(time_interval)
@@ -139,7 +139,7 @@ class frameCaptureWrapper(imageCollector):
         else:
             for i in range(num_im):
                     result = self.capture_frame_by_stream(i)
-                    self.insert_to_google_sheet(result, 'collector', self.city, index=i)
+                    self.insert_to_google_sheet(result, 'collector', self.image_prefix, index=i)
 
                     results.append(result)
                     time.sleep(time_interval)
