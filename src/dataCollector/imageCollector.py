@@ -134,11 +134,13 @@ class imageCollector(Uploader):
             
 
         except Exception as e:
-            print(e)
             print('no Firefox founded, will try Chrome')
+            print(e)
             try:
                 exec_path = str(self.path) + '/webdrivers/{}/chromedriver'.format(self.platform)
                 print(exec_path)
+                if self.platform != 'Windows':
+                    os.system("chmod +x {}".format(exec_path))
                 options = ChromeOptions()
                 options.headless = True
                 self.driver = webdriver.Chrome(options=options, executable_path=exec_path)  # Optional argument, if not specified will search path.
