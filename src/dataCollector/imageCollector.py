@@ -99,13 +99,12 @@ class imageCollector(Uploader):
         firefox_profile.set_preference('media.autoplay.default', 0)
         # firefox_profile.set_preference('media.autoplay.allow-muted', True)
 
-        
-        try:
-            exec_path = str(self.path) + '/webdrivers/{}/geckodriver'.format(self.platform)
-            print(exec_path)
+        exec_path = str(self.path) + '/webdrivers/{}/geckodriver'.format(self.platform)
+        print(exec_path)
 
-            if self.platform != 'Windows':
-                os.system("chmod +x {}".format(exec_path))
+        if self.platform != 'Windows':
+            os.system("chmod +x {}".format(exec_path))
+        try:
             
             options = FirefoxOptions()
             options.headless = True
@@ -136,21 +135,22 @@ class imageCollector(Uploader):
         except Exception as e:
             print('no Firefox founded, will try Chrome')
             print(e)
-            try:
-                exec_path = str(self.path) + '/webdrivers/{}/chromedriver'.format(self.platform)
-                print(exec_path)
-                if self.platform != 'Windows':
-                    os.system("chmod +x {}".format(exec_path))
-                options = ChromeOptions()
-                options.headless = True
-                self.driver = webdriver.Chrome(options=options, executable_path=exec_path)  # Optional argument, if not specified will search path.
-                self.driver.maximize_window()
-                size = self.driver.get_window_size()
-                options.add_argument("window-size={}".format(size))
-                self.driver = webdriver.Chrome(options=options, executable_path=exec_path)
-                print('web driver is initialized')
-            except:
-                raise EnvironmentError("---No webdriver founded---")
+            raise EnvironmentError("---No webdriver founded---")
+            # try:
+            #     exec_path = str(self.path) + '/webdrivers/{}/chromedriver'.format(self.platform)
+            #     print(exec_path)
+            #     if self.platform != 'Windows':
+            #         os.system("chmod +x {}".format(exec_path))
+            #     options = ChromeOptions()
+            #     options.headless = True
+            #     self.driver = webdriver.Chrome(options=options, executable_path=exec_path)  # Optional argument, if not specified will search path.
+            #     self.driver.maximize_window()
+            #     size = self.driver.get_window_size()
+            #     options.add_argument("window-size={}".format(size))
+            #     self.driver = webdriver.Chrome(options=options, executable_path=exec_path)
+            #     print('web driver is initialized')
+            # except:
+            #     raise EnvironmentError("---No webdriver founded---")
 
        
 
