@@ -20,7 +20,7 @@ from .googleUploader import Uploader
 class imageCollector(Uploader):
     def __init__(self, webcam, city):
         super().__init__('client_secrets.json')
-        self.webcam = webcam #dict 
+        self.webcam = webcam 
         self.city = city.split('_', 1)[0]
         self.image_prefix = city
         self.path = Path(os.getcwd())
@@ -51,9 +51,9 @@ class imageCollector(Uploader):
     def init_streamlink(self):
         self.session = Streamlink()
         self.session.set_option("http-headers", "User-Agent=Mozilla/5.0 (Windows NT 10.0 Win64 x64 rv:72.0) Gecko/20100101 Firefox/72.0")
-        self.streams = self.session.streams(self.webcam[0])
+        self.streams = self.session.streams(self.webcam)
         if self.streams is None:
-            raise ValueError("cannot open the stream link %s" % self.webcam[0])
+            raise ValueError("cannot open the stream link %s" % self.webcam)
         try:
             qlist = list(self.streams.keys())
             print(qlist)
@@ -64,7 +64,7 @@ class imageCollector(Uploader):
             self.video_cap = cv2.VideoCapture(self.stream_url)
         except Exception as e:
             print(e)
-            # raise ValueError("cannot open the stream link %s" % self.webcam[0])
+            # raise ValueError("cannot open the stream link %s" % self.webcam)
             try:
                 quality = 'best'
                 print('The stream quality is {}'.format(quality))
@@ -82,7 +82,7 @@ class imageCollector(Uploader):
                 except Exception as e:
                     print(e)
                 finally:
-                    raise ValueError("cannot open the stream link %s" % self.webcam[0])
+                    raise ValueError("cannot open the stream link %s" % self.webcam)
         
 
     def init_webdriver(self):
@@ -107,12 +107,12 @@ class imageCollector(Uploader):
         try:
             
             options = FirefoxOptions()
-            options.headless = True
+            # options.headless = True
             # options.add_argument("window-size=1920,1080")
-            
+            print(self.webcam)
             self.driver = webdriver.Firefox(firefox_profile=firefox_profile, options=options, executable_path=exec_path)
-            self.driver.get(self.webcam[0])
-            print(self.webcam[0])
+            self.driver.get(self.webcam)
+            
             time.sleep(35)  # Jump over the ads
             # self.driver.maximize_window()
             try:
