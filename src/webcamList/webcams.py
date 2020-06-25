@@ -19,7 +19,7 @@ webcams['Venice_1'] = 'https://www.skylinewebcams.com/zh/webcam/italia/veneto/ve
 webcams['Venice_2'] = 'https://www.skylinewebcams.com/zh/webcam/italia/veneto/venezia/riva-schiavoni.html'
 webcams['Amsterdam'] = 'https://www.youtube.com/watch?v=hBnhSxlL9So'
 webcams['Rome'] = 'https://www.skylinewebcams.com/de/webcam/italia/lazio/roma/piazza-di-spagna.html', 'webcam'
-webcams['Rome'] = 'https://www.whatsupcams.com/en/webcams/italy/latium/rome/webcam-rome-navona-square/'
+webcams['Rome_1'] = 'https://www.whatsupcams.com/en/webcams/italy/latium/rome/webcam-rome-navona-square/'
 webcams['Jesolo'] = 'https://www.youtube.com/watch?v=2Xjog3Xs-P0&feature=emb_logo'
 webcams['Jesolo_1'] = 'https://www.youtube.com/watch?v=zE_yzuxFiMo&feature=emb_logo'
 webcams['Miami'] = 'https://www.earthcam.com/usa/florida/miami/?cam=miami'
