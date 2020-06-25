@@ -12,7 +12,7 @@ webcams['Dublin_1'] = 'https://www.skylinewebcams.com/de/webcam/ireland/leinster
 webcams['Dublin_2'] = 'https://www.earthcam.com/world/ireland/dublin/?cam=dublinpub'
 webcams['Prague'] = 'https://www.earthcam.com/world/czechrepublic/prague/?cam=grandhotel_str', 'videoPlayer_ima-ad-container'
 webcams['Prague_1'] = 'https://www.skylinewebcams.com/zh/webcam/czech-republic/prague/prague/prague.html'
-webcams['Elburg'] = 'https://www.youtube.com/watch?v=vPxAgn3EtDQ' 
+# webcams['Elburg'] = 'https://www.youtube.com/watch?v=vPxAgn3EtDQ' 
 # webcams['Bruges'] = 'https://www.skylinewebcams.com/de/webcam/belgique/flandres/bruges/bruges.html'
 webcams['Venice'] = 'https://www.youtube.com/watch?v=HpZAez2oYsA'
 webcams['Venice_1'] = 'https://www.skylinewebcams.com/zh/webcam/italia/veneto/venezia/piazza-san-marco.html'

@@ -45,8 +45,8 @@ class screenshotCaptureWrapper(imageCollector):
             self.upload_img_to_google_drive(self.google_drive_folder_id, os.path.join(self.target_img_path, target_img_name), target_img_name)
             
             print(os.path.join(self.target_img_path, target_img_name))
-            current_time = None
-            current_weather = None
+            current_time = ''
+            current_weather = ''
             try:
                 current_time = times.get_time(self.tz)
                 print(current_time)
@@ -54,22 +54,33 @@ class screenshotCaptureWrapper(imageCollector):
                 print('--- can not get the current time---')
                 print(e)
             try:
-                current_weather = weather.get_weather(self.image_prefix)
+                current_weather = weather.get_weather(self.city)
             except Exception as e:
                 print('---can not get the current weather---')
                 print(e)
 
-            for func in [result.append(target_img_name),
-                        result.append(current_time),
-                        result.extend(current_weather),
-                        result.append(self.platform)]:
-
-                try:
-                    func()
-                except Exception as e:
-                    print('---can not get result---')
+            try:
+                result.append(target_img_name)
+            except Exception as e:
+                    print('---can append target img name--')
                     print(e)
-                
+            
+            try:
+                result.append(current_time)
+            except Exception as e:
+                    print('---can append current time--')
+                    print(e)
+            try:
+                result.extend(current_weather)
+            except Exception as e:
+                    print('---can append current weather--')
+                    print(e)
+            try:
+                result.append(self.platform)
+            except Exception as e:
+                    print('---can append platform--')
+                    print(e)
+            
             return result
     def capture_frame_by_screenshot_wrapper(self,
                                         num_im=6,

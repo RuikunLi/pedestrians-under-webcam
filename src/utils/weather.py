@@ -1,6 +1,7 @@
 import requests
 
 def get_weather(city):
+    print('getting weather of {}...'.format(city))
     try:
         weather_url = 'https://weather.ls.hereapi.com/weather/1.0/report.json?apiKey=RJZ0LgP7DcxKohEaMSCeMkPUBWev7ddOijgIVQQjmtg&product=observation&name={}'.format(city)
         status_code = requests.get(weather_url).status_code
