@@ -121,8 +121,12 @@ class imageCollector(Uploader):
                     fullScreenButton = self.driver.find_element_by_xpath("//*[@id='ecnPlayer']/div/div[1]/div[2]/div[2]/button[13]")
                     fullScreenButton.click()
                 except Exception as e:
-                    print('--- Can not full screen---')
-                    print(e)
+                    try:
+                        fullScreenButton = self.driver.find_element_by_xpath(" //*[@id='slp-player']/div[2]/div[1]/div[3]/a[3]")
+                        fullScreenButton.click()
+                    except Exception as e:
+                        print('--- Can not full screen---')
+                        print(e)
             print('web driver is initialized')
             
 
