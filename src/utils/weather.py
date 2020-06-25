@@ -28,5 +28,9 @@ def get_weather(city):
     except Exception as e:
         print('---can not get the weather---')
         print(e)
+
+# if __name__ == "__main__":
+#     print(get_weather('LA'))
+
     
     
