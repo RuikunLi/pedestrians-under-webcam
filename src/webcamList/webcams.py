@@ -1,6 +1,8 @@
 webcams = dict()
 webcams['London'] = 'https://www.earthcam.com/world/england/london/abbeyroad/?cam=abbeyroad_uk'
-webcams['London_1'] = 'https://www.youtube.com/watch?v=iYoDfcEQGqg'
+# webcams['London_1'] = 'https://www.youtube.com/watch?v=iYoDfcEQGqg' # unavailiable
+webcams['London_2'] = 'https://www.youtube.com/watch?v=c9HUlTZQX0k'
+webcams['London_3'] = 'https://www.youtube.com/watch?v=St7aTfoIdYQ'
 webcams['NYC'] = 'https://www.earthcam.com/usa/newyork/timessquare/?cam=tsrobo1'
 webcams['NYC_1'] = 'https://www.youtube.com/watch?v=0uA1tv6MFB0&feature=emb_logo'
 webcams['NYC_2'] = 'https://www.earthcam.com/usa/newyork/fifthave/?cam=nyc5th_str'
