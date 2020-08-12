@@ -24,7 +24,7 @@ class imageCollector(Uploader):
         self.city = city.split('_', 1)[0]
         self.image_prefix = city
         self.path = Path(os.getcwd())
-        self.dir_path = str(self.path.parent) + '/rawData'
+        self.dir_path = str(self.path.parent) + '/rawData_new'
         self.target_img_path = os.path.join(self.dir_path, self.image_prefix)
         # self.driver_path = str(self.path) + '/webdrivers'
         self.platform = platform.system()
