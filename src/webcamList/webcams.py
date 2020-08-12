@@ -4,7 +4,7 @@ webcams['London'] = 'https://www.earthcam.com/world/england/london/abbeyroad/?ca
 webcams['London_2'] = 'https://www.youtube.com/watch?v=c9HUlTZQX0k'
 webcams['London_3'] = 'https://www.youtube.com/watch?v=St7aTfoIdYQ'
 webcams['NYC'] = 'https://www.earthcam.com/usa/newyork/timessquare/?cam=tsrobo1'
-webcams['NYC_1'] = 'https://www.youtube.com/watch?v=0uA1tv6MFB0&feature=emb_logo'
+webcams['NYC_1'] = 'https://www.youtube.com/watch?v=srlpC5tmhYs' # unavailiable #url changed
 webcams['NYC_2'] = 'https://www.earthcam.com/usa/newyork/fifthave/?cam=nyc5th_str'
 webcams['NYC_3'] = 'https://www.earthcam.com/usa/newyork/wallstreet/chargingbull/?cam=chargingbull_hd'
 webcams['Dublin'] = 'https://www.earthcam.com/world/ireland/dublin/?cam=templebar'

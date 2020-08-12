@@ -85,7 +85,7 @@ class screenshotCaptureWrapper(imageCollector):
     def capture_frame_by_screenshot_wrapper(self,
                                         num_im=6,
                                         time_interval=10,
-                                        bsize=2):
+                                        bsize=1):
         """
         A wrapper of the function capture_frame_by_stream.
         
