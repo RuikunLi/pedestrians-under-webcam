@@ -79,10 +79,10 @@ def detection(webcam_name, algo, prob=30, classes='all'):
         target_image_name = img.split('/')[-1]
         print(target_image_name, lineno())
         if classes == 'all':
-            detections = detector.detectObjectsFromImage(input_image=img, output_image_path=os.path.join(thisdir , "{}_{}_{}_{}/{}_{}_{}".format(webcam_name, algo, classes, prob, algo, target_image_name_prob)), minimum_percentage_probability=prob)
+            detections = detector.detectObjectsFromImage(input_image=img, output_image_path=os.path.join(thisdir , "{}_{}_{}_{}/{}_{}_{}".format(webcam_name, algo, classes, prob, algo, target_image_name, prob)), minimum_percentage_probability=prob)
         elif classes == 'person':
             custom_objects=detector.CustomObjects(person=True)
-            detections = detector.detectCustomObjectsFromImage(custom_objects=custom_objects, input_image=img, output_image_path=os.path.join(thisdir , "{}_{}_{}_{}/{}_{}_{}".format(webcam_name, algo, classes, prob, algo, target_image_name_prob)), minimum_percentage_probability=prob)
+            detections = detector.detectCustomObjectsFromImage(custom_objects=custom_objects, input_image=img, output_image_path=os.path.join(thisdir , "{}_{}_{}_{}/{}_{}_{}".format(webcam_name, algo, classes, prob, algo, target_image_name, prob)), minimum_percentage_probability=prob)
 
         boxes = []
         for eachObject in detections:
@@ -94,8 +94,8 @@ def detection(webcam_name, algo, prob=30, classes='all'):
         exec_time = time.time() - start_time
         exec_times[target_image_name] = round(exec_time,2)
     df = eval('df_'+ str(webcam_name))
-    df['boxes_{}_{}_{}'.format(algo,classes_prob)] = df['image_name'].map(all_boxes)
-    df['{}_{}_{}_exec_time'.format(algo,classes_prob)] = df['image_name'].map(exec_times)
+    df['boxes_{}_{}_{}'.format(algo,classes, prob)] = df['image_name'].map(all_boxes)
+    df['{}_{}_{}_exec_time'.format(algo,classes, prob)] = df['image_name'].map(exec_times)
     
 print('--- detecting ---', lineno())
 
