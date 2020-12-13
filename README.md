@@ -1,4 +1,4 @@
-# Pedestrian-attribute-mining-via-webcam
+# Pedestrian-mining-via-webcam
 
 
 # Linux
